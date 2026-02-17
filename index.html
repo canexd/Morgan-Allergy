@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Morgan Food System</title>
+
+<style>
+  body{
+    background:#0f1c2e;
+    color:#fff;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    margin:0;
+    padding:20px;
+  }
+  h1{text-align:center;margin:8px 0 18px}
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+    margin-bottom:18px;
+  }
+  button{
+    background:#1f2f4a;
+    color:white;
+    border:none;
+    padding:11px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+  }
+  button.active{background:#2f6df6}
+  .card{
+    background:#16243a;
+    padding:16px;
+    border-radius:16px;
+    margin:0 auto 18px;
+    max-width:720px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+  }
+  h2{margin:0 0 10px}
+  input,textarea,select{
+    width:100%;
+    padding:12px;
+    margin:7px 0;
+    border-radius:12px;
+    border:none;
+    background:#1e2e4a;
+    color:white;
+    box-sizing:border-box;
+    font-size:16px;
+  }
+  textarea{min-height:92px; resize:vertical}
+
+  .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+  .row > * {flex:1}
+
+  .pill{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.2px;
+  }
+  .pill-high{background:rgba(255,92,92,.18); color:#ff7a7a; border:1px solid rgba(255,92,92,.35)}
+  .pill-mod{background:rgba(255,196,92,.15); color:#ffd36a; border:1px solid rgba(255,196,92,.35)}
+  .pill-safe{background:rgba(76,255,136,.15); color:#6dff9b; border:1px solid rgba(76,255,136,.35)}
+
+  .result{
+    padding:10px 12px;
+    border-radius:12px;
+    margin-top:8px;
+    background:#122035;
+    border:1px solid rgba(255,255,255,.06);
+    line-height:1.35;
+  }
+  .r-safe{color:#6dff9b}
+  .r-bad{color:#ff7a7a}
+  .subtle{opacity:.85; font-size:13px}
+  .divider{height:1px;background:rgba(255,255,255,.08);margin:12px 0}
+</style>
+</head>
+
+<body>
+<h1>Morgan Food System</h1>
+
+<div class="tabs">
+  <button onclick="showTab('scanner')" id="tab-scanner" class="active">Scanner</button>
+  <button onclick="showTab('meal')" id="tab-meal">Meal Planner</button>
+</div>
+
+<!-- SCANNER -->
+<div id="scanner" class="card">
+  <h2>Ingredient Scanner</h2>
+  <div class="subtle">
+    Paste ingredients (comma or line separated). Results show if Morgan has a listed reaction + severity.
+  </div>
+
+  <textarea id="scanInput" placeholder="Example: chicken, coconut oil, pumpkin puree"></textarea>
+
+  <div class="row">
+    <button onclick="runDemo()">Demo</button>
+    <button onclick="scanIngredients()">Scan</button>
+  </div>
+
+  <div class="divider"></div>
+
+  <label>Scan Mode</label>
+  <select id="scanMode">
+    <option value="food" selected>Food</option>
+    <option value="additives">Additives</option>
+  </select>
+
+  <div id="scanResults"></div>
+</div>
+
+<!-- MEAL PLANNER -->
+<div id="meal" class="card" style="display:none">
+  <h2>Meal Planner</h2>
+  <div class="subtle">
+    Meal generator filters out all foods listed as <b>High</b> or <b>Moderate</b> for Morgan.
+    Output includes <b>lbs + oz</b> and also <b>cups</b>.
+  </div>
+
+  <label>Morgan weight (lbs)</label>
+  <input type="number" id="morganWeight" value="55" min="1" step="1">
+
+  <label>Feeding % of bodyweight per day</label>
+  <input type="range" id="feedPercent" min="1.5" max="4" step="0.1" value="2.5">
+  <div class="subtle"><span id="percentLabel">2.5%</span></div>
+
+  <label>Meals per day</label>
+  <select id="mealsPerDay">
+    <option value="1">1</option>
+    <option value="2" selected>2</option>
+    <option value="3">3</option>
+  </select>
+
+  <label>Batch days</label>
+  <input type="range" id="batchDays" min="1" max="7" value="7">
+  <div class="subtle"><span id="batchLabel">7 days</span></div>
+
+  <div class="divider"></div>
+
+  <label>Liquids (bone broth, etc.) display as</label>
+  <select id="liquidUnit">
+    <option value="fl_oz" selected>fl oz (US)</option>
+    <option value="cups">cups</option>
+  </select>
+
+  <div class="row">
+    <button onclick="generateMeal()">Generate Meal</button>
+    <button onclick="exportGrocery()">Export Grocery List</button>
+  </div>
+
+  <div id="mealOutput"></div>
+</div>
+
+<script>
+/* =============================
+   MORGAN: FOOD REACTIVITY LISTS
+============================= */
+
+const morganHighFood = [
+  "bacon","carrot","cheese - cheddar","cheese - cottage","durian","fermented pork","flaxseed",
+  "ginkgo biloba","mackerel","milk - cow","ocean fish meal","pepper - green","pig skin",
+  "pine nut","pork","pork fat","pork heart","pork kidney","pork liver","pork skins","pork tongue",
+  "soy flour","tofu","yogurt (plain)"
+];
+
+const morganModerateFood = [
+  "alfalfa nutrient concentrate","anchovy","brussels sprouts","chestnut",
+  "chokeberry (aronia berry)","coconut","cranberries","cream","elk","figs","grapefruit",
+  "grouse","okra","olive oil","pepper - white","pig trotters","rice (white)","roe - deer",
+  "salmon","scarlet runner bean","teff (vegan)","trout","turkey heart"
+];
+
+/* =============================
+   MORGAN: ADDITIVES REACTIVITY LISTS
+============================= */
+
+const morganHighAdditives = [
+  "e 129 allura red (synthetic red dye)",
+  "e 170 calcium carbonate (white pigment, anti-caking)",
+  "e 172 iron oxides (yellow, red or black pigment)",
+  "e 234 nisin (antimicrobial preservative)",
+  "e 304 ascorbyl palmitate (antioxidant)",
+  "e 463 hydroxypropyl cellulose (thickener)",
+  "e 472 d tartaric acid esters of mono- and diglycerides (emulsifier)",
+  "e 475 polyglycerol esters of fatty acids (emulsifier)",
+  "e 512 stannous chloride (preservative)",
+  "e 629 calcium guanylate (flavour enhancer)",
+  "e 938 argon (packing gas)",
+  "e 941 nitrogen (packing gas)",
+  "formalin"
+];
+
+const morganModerateAdditives = [
+  "e 110 sunset yellow (orange synthetic dye)",
+  "e 151 brilliant black (synthetic black dye)",
+  "e 203 calcium sorbate (preservative)",
+  "e 221 sodium sulphite (preservative)",
+  "e 233 thiabendazole (preservative/fungicide)",
+  "e 326 potassium lactate (acidity regulator)",
+  "e 336 potassium tartrate (acidity regulator)",
+  "e 338 phosphoric acid (acidity regulator)",
+  "e 460 cellulose (bulking agent)",
+  "e 495 sorbitan monopalmitate (emulsifier)",
+  "e 514 sodium sulphate (acidity regulator)",
+  "e 541 sodium aluminium phosphate (raising agent)",
+  "e 585 ferrous lactate (colour stabiliser)",
+  "e 952 cyclamic acid and salts (sweetener)",
+  "e 953 isomalt (sweetener)",
+  "e 966 lactitol (sweetener)",
+  "polyethylene glycol"
+];
+
+/* =============================
+   SAFE FOOD LIBRARY (DOG-SAFE)
+   Then filtered by Morgan's lists.
+============================= */
+
+// Proteins (dog-safe defaults)
+const proteins = [
+  "chicken","turkey","duck","lamb","bison","venison","beef","sardine"
+];
+
+// Carbs (dog-safe defaults)
+const carbs = [
+  "rice (brown)","oats","barley","quinoa","sweet potato","pumpkin"
+];
+
+// Veggies (dog-safe defaults)
+const veggies = [
+  "zucchini","spinach","broccoli","green beans","peas","cucumber"
+];
+
+// Fats (dog-safe defaults)
+const fats = [
+  "fish oil","salmon oil","sunflower oil"
+];
+
+// Flavor boosters (dog-safe defaults)
+const flavorBoosters = [
+  "pumpkin puree","bone broth","blueberries","apple","parsley"
+];
+
+/* =============================
+   HELPERS
+============================= */
+
+function norm(s){
+  return (s||"").toLowerCase().trim().replace(/\s+/g," ");
+}
+
+function severityFood(item){
+  item = norm(item);
+  if(morganHighFood.includes(item)) return "High";
+  if(morganModerateFood.includes(item)) return "Moderate";
+  return null;
+}
+
+function severityAdditive(item){
+  item = norm(item);
+  if(morganHighAdditives.includes(item)) return "High";
+  if(morganModerateAdditives.includes(item)) return "Moderate";
+  return null;
+}
+
+function isBannedFood(item){
+  item = norm(item);
+  return morganHighFood.includes(item) || morganModerateFood.includes(item);
+}
+
+function pickRandom(arr){
+  return arr[Math.floor(Math.random()*arr.length)];
+}
+
+function ozToCups(oz){
+  // rough kitchen conversion for mixed foods
+  // 1 cup ~ 4 oz (volume estimate). approximate by design.
+  return oz/4;
+}
+
+function ozToLbsOz(totalOz){
+  const lbs = Math.floor(totalOz/16);
+  const oz = totalOz - (lbs*16);
+  return {lbs, oz};
+}
+
+function fmtLbsOz(totalOz){
+  const {lbs, oz} = ozToLbsOz(totalOz);
+  const ozFixed = oz.toFixed(1).replace(/\.0$/,"");
+  if(lbs <= 0) return `${ozFixed} oz`;
+  return `${lbs} lb ${ozFixed} oz`;
+}
+
+function approxFlOzFromOzWeight(ozWeight){
+  // treat broth as water-like: 1 oz weight ≈ 1 fl oz volume
+  return ozWeight;
+}
+
+function fmtLiquid(ozWeight){
+  const unit = document.getElementById("liquidUnit").value;
+  const flOz = approxFlOzFromOzWeight(ozWeight);
+  if(unit==="cups"){
+    return `${(flOz/8).toFixed(2).replace(/0+$/,"").replace(/\.$/,"")} cups`;
+  }
+  return `${flOz.toFixed(1).replace(/\.0$/,"")} fl oz`;
+}
+
+function filteredSafe(arr){
+  return arr.map(norm).filter(x=>!isBannedFood(x));
+}
+
+/* =============================
+   TAB SWITCH
+============================= */
+
+function showTab(tab){
+  ["scanner","meal"].forEach(t=>{
+    document.getElementById(t).style.display = (t===tab) ? "block" : "none";
+    document.getElementById("tab-"+t).classList.toggle("active", t===tab);
+  });
+}
+
+/* =============================
+   SCANNER
+============================= */
+
+function scanIngredients(){
+  const raw = document.getElementById("scanInput").value || "";
+  const items = raw.split(/[\n,]+/).map(x=>norm(x)).filter(Boolean);
+  const mode = document.getElementById("scanMode").value;
+
+  if(items.length===0){
+    document.getElementById("scanResults").innerHTML = "<div class='result subtle'>Paste some ingredients first.</div>";
+    return;
+  }
+
+  let html = "";
+  items.forEach(i=>{
+    const sev = (mode==="additives") ? severityAdditive(i) : severityFood(i);
+
+    if(sev){
+      const pillClass = (sev==="High") ? "pill-high" : "pill-mod";
+      html += `
+        <div class="result r-bad">
+          <div><b>${i}</b> — NOT SAFE for <b>Morgan</b></div>
+          <div style="margin-top:6px"><span class="pill ${pillClass}">Morgan: ${sev}</span></div>
+        </div>
+      `;
+    }else{
+      html += `
+        <div class="result r-safe">
+          <div><b>${i}</b> — SAFE for <b>Morgan</b></div>
+          <div class="subtle" style="margin-top:6px">No listed reactivity found in Morgan’s report for this item.</div>
+        </div>
+      `;
+    }
+  });
+
+  document.getElementById("scanResults").innerHTML = html;
+}
+
+function runDemo(){
+  document.getElementById("scanInput").value = "Chicken\nCarrot\nPumpkin Puree\nCoconut\nBone Broth\nRice (white)";
+  document.getElementById("scanMode").value = "food";
+  scanIngredients();
+}
+
+/* =============================
+   MEAL PLANNER
+============================= */
+
+document.getElementById("feedPercent").oninput = function(){
+  document.getElementById("percentLabel").innerText = this.value + "%";
+}
+document.getElementById("batchDays").oninput = function(){
+  document.getElementById("batchLabel").innerText = this.value + " days";
+}
+
+let groceryData = null;
+
+function generateMeal(){
+  const morganLbs = parseFloat(document.getElementById("morganWeight").value || "0");
+  const percent = parseFloat(document.getElementById("feedPercent").value || "2.5") / 100;
+  const meals = parseInt(document.getElementById("mealsPerDay").value || "2", 10);
+  const days = parseInt(document.getElementById("batchDays").value || "7", 10);
+
+  if(!morganLbs){
+    document.getElementById("mealOutput").innerHTML = "<div class='result subtle'>Enter Morgan’s weight.</div>";
+    return;
+  }
+
+  // Daily food in oz (by bodyweight % rule)
+  const dailyOz = morganLbs * percent * 16;
+  const perMealOz = dailyOz / meals;
+
+  // Batch total
+  const batchTotalOz = dailyOz * days;
+
+  // Safe pools (filtered to exclude High/Moderate)
+  const pSafe = filteredSafe(proteins);
+  const cSafe = filteredSafe(carbs);
+  const vSafe = filteredSafe(veggies);
+  const fSafe = filteredSafe(fats);
+  const bSafe = filteredSafe(flavorBoosters);
+
+  const protein = pSafe.length ? pickRandom(pSafe) : "chicken";
+  const carb    = cSafe.length ? pickRandom(cSafe) : "rice (brown)";
+  const veg     = vSafe.length ? pickRandom(vSafe) : "green beans";
+  const fat     = fSafe.length ? pickRandom(fSafe) : "fish oil";
+  const boost   = bSafe.length ? pickRandom(bSafe) : "pumpkin puree";
+
+  // Macro split (weight) – simple home-cook heuristic
+  // Protein 50% / Carb 20% / Veg 15% / Fat 5% / Boost 10%
+  const proteinOz = batchTotalOz * 0.50;
+  const carbOz    = batchTotalOz * 0.20;
+  const vegOz     = batchTotalOz * 0.15;
+  const fatOz     = batchTotalOz * 0.05;
+  const boostOz   = batchTotalOz * 0.10;
+
+  groceryData = {
+    protein: {name: protein, oz: proteinOz},
+    carb:    {name: carb, oz: carbOz},
+    veg:     {name: veg, oz: vegOz},
+    fat:     {name: fat, oz: fatOz},
+    boost:   {name: boost, oz: boostOz},
+    meta:    {days, meals, dailyOz, perMealOz, batchTotalOz}
+  };
+
+  const out = `
+    <div class="divider"></div>
+    <h3 style="margin:0 0 6px">Meal Suggestion</h3>
+    <div class="subtle">All picks are filtered to exclude Morgan’s Moderate/High list.</div>
+
+    <div class="divider"></div>
+
+    <div><b>Protein:</b> ${protein}</div>
+    <div><b>Carb:</b> ${carb}</div>
+    <div><b>Veg:</b> ${veg}</div>
+    <div><b>Fat:</b> ${fat}</div>
+    <div><b>Flavor/Boost:</b> ${boost} <span class="subtle">(taste + moisture)</span></div>
+
+    <div class="divider"></div>
+
+    <h3 style="margin:0 0 6px">Feeding Amounts</h3>
+    <div><b>Morgan daily:</b> ${fmtLbsOz(dailyOz)} (~${ozToCups(dailyOz).toFixed(2)} cups)</div>
+    <div><b>Morgan per meal:</b> ${fmtLbsOz(perMealOz)} (~${ozToCups(perMealOz).toFixed(2)} cups)</div>
+
+    <div class="divider"></div>
+
+    <h3 style="margin:0 0 6px">Batch Cook (${days} day${days===1?"":"s"})</h3>
+    <div><b>Total batch food:</b> ${fmtLbsOz(batchTotalOz)} (~${ozToCups(batchTotalOz).toFixed(2)} cups)</div>
+
+    <div class="divider"></div>
+
+    <h3 style="margin:0 0 6px">Grocery Breakdown</h3>
+    <div class="subtle">Measured as lbs+oz. For broth/liquids we also show fl oz.</div>
+
+    <div class="result">
+      <div><b>${protein}</b> — ${fmtLbsOz(proteinOz)}</div>
+      <div><b>${carb}</b> — ${fmtLbsOz(carbOz)}</div>
+      <div><b>${veg}</b> — ${fmtLbsOz(vegOz)}</div>
+      <div><b>${fat}</b> — ${fmtLbsOz(fatOz)}</div>
+      <div><b>${boost}</b> — ${fmtLbsOz(boostOz)} <span class="subtle">(≈ ${fmtLiquid(boostOz)})</span></div>
+    </div>
+  `;
+
+  document.getElementById("mealOutput").innerHTML = out;
+}
+
+function exportGrocery(){
+  if(!groceryData){
+    alert("Generate a meal first.");
+    return;
+  }
+  const g = groceryData;
+
+  const text =
+`Morgan Grocery List
+
+Batch: ${g.meta.days} day(s)
+Meals/day: ${g.meta.meals}
+
+INGREDIENTS (lbs + oz)
+- ${g.protein.name}: ${fmtLbsOz(g.protein.oz)}
+- ${g.carb.name}: ${fmtLbsOz(g.carb.oz)}
+- ${g.veg.name}: ${fmtLbsOz(g.veg.oz)}
+- ${g.fat.name}: ${fmtLbsOz(g.fat.oz)}
+- ${g.boost.name}: ${fmtLbsOz(g.boost.oz)} (≈ ${fmtLiquid(g.boost.oz)})
+
+FEEDING AMOUNTS
+Morgan daily: ${fmtLbsOz(g.meta.dailyOz)} (~${ozToCups(g.meta.dailyOz).toFixed(2)} cups)
+Morgan per meal: ${fmtLbsOz(g.meta.perMealOz)} (~${ozToCups(g.meta.perMealOz).toFixed(2)} cups)
+`;
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>{
+      alert("Copied grocery list to clipboard ✅");
+    }).catch(()=>{
+      alert(text);
+    });
+  }else{
+    alert(text);
+  }
+}
+</script>
+</body>
+</html>
