@@ -9,109 +9,171 @@
 :root{
   --bg:#0b1424;
   --panel:#121f35;
+  --panel2:#0f1b2f;
   --ink:#eaf1ff;
-  --muted:rgba(234,241,255,.75);
+  --muted:rgba(234,241,255,.78);
+  --muted2:rgba(234,241,255,.60);
   --line:rgba(255,255,255,.08);
+
+  --blue:#2f6df6;
+  --purple:#8a5cff;
+
   --good:#5cffad;
   --bad:#ff6b6b;
   --caution:#ffd166;
+
+  --shadow:0 16px 44px rgba(0,0,0,.34);
+  --radius:18px;
+  --radius2:14px;
+  --mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
 }
+
 *{box-sizing:border-box}
 body{
   margin:0;
-  padding:20px;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:var(--bg);
+  padding:18px;
+  background: radial-gradient(1200px 800px at 20% 0%, rgba(47,109,246,.18), transparent 55%),
+              radial-gradient(1200px 800px at 80% 10%, rgba(138,92,255,.14), transparent 55%),
+              var(--bg);
   color:var(--ink);
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
-h1{text-align:center;margin:10px 0 20px}
-.tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+
+.wrap{max-width:980px;margin:0 auto}
+
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin:10px 0 14px;
+  padding:14px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.hero h1{margin:0;font-size:18px}
+.hero .sub{font-size:13px;color:var(--muted)}
+
+.tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:14px 0 18px;
+}
 .tabBtn{
-  padding:10px 16px;
   border:none;
-  border-radius:999px;
-  background:#1c2a44;
-  color:white;
   cursor:pointer;
-  font-weight:700;
-}
-.tabBtn.active{background:#2f6df6}
-.card{
-  max-width:950px;
-  margin:0 auto 20px;
-  background:var(--panel);
-  padding:20px;
-  border-radius:16px;
+  padding:11px 14px;
+  border-radius:999px;
+  font-weight:800;
+  color:var(--ink);
+  background:rgba(255,255,255,.05);
   border:1px solid var(--line);
 }
+.tabBtn.active{
+  background:linear-gradient(180deg,rgba(47,109,246,.45),rgba(47,109,246,.22));
+  border-color:rgba(47,109,246,.45);
+}
+
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+  margin-bottom:16px;
+}
+.card h2{margin:0 0 10px;font-size:16px}
+
 textarea,input,select{
   width:100%;
   padding:12px;
-  border-radius:12px;
+  border-radius:14px;
   border:1px solid var(--line);
-  background:#0f1b2f;
-  color:white;
-  margin-top:6px;
+  background:rgba(10,18,32,.65);
+  color:var(--ink);
   font-size:16px;
 }
-textarea{min-height:120px}
-.btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+textarea{min-height:122px}
+
+.btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 .btn{
-  padding:10px 14px;
   border:none;
-  border-radius:12px;
   cursor:pointer;
-  font-weight:800;
-  background:#1f2f4a;
-  color:white;
-}
-.btn.primary{background:#2f6df6}
-.pill{
-  padding:5px 10px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:800;
+  padding:11px 14px;
+  border-radius:14px;
+  font-weight:900;
+  color:var(--ink);
+  background:rgba(255,255,255,.06);
   border:1px solid var(--line);
 }
-.good{color:var(--good)}
-.bad{color:var(--bad)}
-.caution{color:var(--caution)}
+.btn.primary{
+  background:linear-gradient(180deg,rgba(47,109,246,.55),rgba(47,109,246,.25));
+  border-color:rgba(47,109,246,.45);
+}
+
 .result{
   margin-top:12px;
   padding:12px;
-  border-radius:12px;
+  border-radius:var(--radius2);
   border:1px solid var(--line);
-  background:#0f1b2f;
+  background:rgba(8,14,26,.60);
 }
+
+.pill{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  border:1px solid var(--line);
+}
+
+.pill.good{color:var(--good)}
+.pill.bad{color:var(--bad)}
+.pill.caution{color:var(--caution)}
+
 .muted{color:var(--muted);font-size:13px}
-.divider{height:1px;background:var(--line);margin:15px 0}
-.savedBox{
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:10px;
-  margin-top:10px;
-  white-space:pre-wrap;
-  font-family:monospace;
-}
+.mono{font-family:var(--mono)}
+.divider{height:1px;background:var(--line);margin:12px 0}
 </style>
 </head>
-
 <body>
-<h1>🐾 Pet Peeves – Morgan</h1>
+
+<div class="wrap">
+<div class="hero">
+<div>
+<h1>🐾 Pet Peeves — Morgan</h1>
+<div class="sub">
+Ultra Smart Scanner • Additives + Food • Meal Planner • Saved Meals • OCR-safe
+</div>
+</div>
+</div>
 
 <div class="tabs">
-  <button class="tabBtn active" id="tab-scanner" onclick="showTab('scanner')">Scanner</button>
-  <button class="tabBtn" id="tab-meal" onclick="showTab('meal')">Meal Planner</button>
-  <button class="tabBtn" id="tab-saved" onclick="showTab('saved')">Saved Meals</button>
-  <button class="tabBtn" id="tab-lists" onclick="showTab('lists')">Lists</button>
+<button class="tabBtn active" id="tab-scanner" onclick="showTab('scanner')">Scanner</button>
+<button class="tabBtn" id="tab-meal" onclick="showTab('meal')">Meal Planner</button>
+<button class="tabBtn" id="tab-saved" onclick="showTab('saved')">Saved Meals</button>
 </div>
 
 <!-- SCANNER -->
 <div id="scanner" class="card">
-<h2>Ingredient Scanner</h2>
-<div class="muted">Scans food + additives together. Handles plurals and ignores parenthesis notes from photos.</div>
+<h2>🔍 Scanner</h2>
+<div class="muted">
+Paste ingredients (comma or line separated). Food + Additives scanned together.
+Handles plurals, OCR parentheses, and parent keyword breakdown.
+</div>
 
-<textarea id="scanInput" placeholder="Paste ingredients here"></textarea>
+<textarea id="scanInput" placeholder="Example:
+Ingredients: apples, calcium carbonate (to preserve color)
+Chicken
+Rice
+Yogurt
+E 221 sodium sulphite"></textarea>
 
 <div class="btnRow">
 <button class="btn primary" onclick="scanAll()">Scan</button>
@@ -120,19 +182,36 @@ textarea{min-height:120px}
 </div>
 
 <div id="scanResults"></div>
+
+<details style="margin-top:12px">
+<summary><b>📸 Photo → Text Tips</b></summary>
+<div class="muted" style="margin-top:6px">
+iPhone: Take photo → tap Live Text → copy → paste here.<br><br>
+Parentheses like <span class="mono">calcium carbonate (freshness)</span> are ignored for matching.<br>
+Plural-safe: carrots → carrot. noodles → noodle.
+</div>
+</details>
+
+</div>
+<!-- MEAL PLANNER -->
+<div id="meal" class="card" style="display:none">
+<h2>🍲 Meal Planner</h2>
+<div class="muted">
+Generates meals from dog-safe foods, then filters out anything listed as Moderate or High for Morgan.
+US units only: lbs / oz / cups / fl oz.
 </div>
 
-<!-- MEAL -->
-<div id="meal" class="card" style="display:none">
-<h2>Meal Planner</h2>
-<div class="muted">Filters out Morgan’s Moderate/High foods automatically.</div>
-
 <label>Morgan weight (lbs)</label>
-<input id="morganWeight" type="number" value="55" />
+<input id="morganWeight" type="number" value="55" min="1" step="1">
 
-<label>Activity % bodyweight per day</label>
-<input id="activityPct" type="range" min="1.5" max="4" step="0.1" value="2.5">
-<div class="muted"><span id="pctLabel">2.5%</span></div>
+<label>Activity level</label>
+<select id="activity">
+<option value="2.0">Sedentary (2%)</option>
+<option value="2.5" selected>Normal (2.5%)</option>
+<option value="3.0">Active (3%)</option>
+<option value="3.5">Very Active (3.5%)</option>
+<option value="4.0">Working (4%)</option>
+</select>
 
 <label>Meals per day</label>
 <select id="mealsPerDay">
@@ -141,7 +220,7 @@ textarea{min-height:120px}
 <option value="3">3</option>
 </select>
 
-<label>Batch days</label>
+<label>Batch days (1–7)</label>
 <input id="batchDays" type="range" min="1" max="7" value="7">
 <div class="muted"><span id="batchLabel">7 days</span></div>
 
@@ -152,8 +231,8 @@ textarea{min-height:120px}
 </select>
 
 <div class="btnRow">
-<button class="btn primary" onclick="generateMeal()">Generate</button>
-<button class="btn" onclick="saveMeal()">Save</button>
+<button class="btn primary" onclick="generateMeal()">Generate Meal</button>
+<button class="btn" onclick="saveMeal()">Save Meal</button>
 <button class="btn" onclick="exportGrocery()">Export Grocery</button>
 </div>
 
@@ -162,35 +241,31 @@ textarea{min-height:120px}
 
 <!-- SAVED -->
 <div id="saved" class="card" style="display:none">
-<h2>Saved Meals</h2>
+<h2>💾 Saved Meals</h2>
 <div id="savedMeals"></div>
 </div>
 
-<!-- LISTS -->
-<div id="lists" class="card" style="display:none">
-<h2>Morgan Reactivity Lists</h2>
-<div id="listsContent"></div>
-</div>
-
 <script>
-/* =====================
-   DATA
-===================== */
 
-const DATA={
+/* =========================================================
+   MORGAN REACTIVITY DATA
+========================================================= */
+
+const MORGAN = {
 food:{
 high:[
-"bacon","carrot","cheese - cheddar","cheese - cottage","durian","fermented pork","flaxseed",
-"ginkgo biloba","mackerel","milk - cow","ocean fish meal","pepper - green","pig skin",
-"pine nut","pork","pork fat","pork heart","pork kidney","pork liver","pork skins",
+"bacon","carrot","cheese - cheddar","cheese - cottage","durian",
+"fermented pork","flaxseed","ginkgo biloba","mackerel","milk - cow",
+"ocean fish meal","pepper - green","pig skin","pine nut","pork",
+"pork fat","pork heart","pork kidney","pork liver","pork skins",
 "pork tongue","soy flour","tofu","yogurt (plain)"
 ],
 moderate:[
 "alfalfa nutrient concentrate","anchovy","brussels sprouts","chestnut",
-"chokeberry (aronia berry)","coconut","cranberries","cream","elk","figs",
-"grapefruit","grouse","okra","olive oil","pepper - white","pig trotters",
-"rice (white)","roe - deer","salmon","scarlet runner bean","teff (vegan)",
-"trout","turkey heart"
+"chokeberry (aronia berry)","coconut","cranberries","cream","elk",
+"figs","grapefruit","grouse","okra","olive oil","pepper - white",
+"pig trotters","rice (white)","roe - deer","salmon",
+"scarlet runner bean","teff (vegan)","trout","turkey heart"
 ]
 },
 additives:{
@@ -207,225 +282,364 @@ moderate:[
 "e 336 potassium tartrate","e 338 phosphoric acid","e 460 cellulose",
 "e 495 sorbitan monopalmitate","e 514 sodium sulphate",
 "e 541 sodium aluminium phosphate","e 585 ferrous lactate",
-"e 952 cyclamic acid","e 953 isomalt","e 966 lactitol","polyethylene glycol"
+"e 952 cyclamic acid","e 953 isomalt","e 966 lactitol",
+"polyethylene glycol"
 ]
 }
 };
 
-/* =====================
-   UTILITIES
-===================== */
+/* =========================================================
+   SMART NORMALIZATION ENGINE
+========================================================= */
 
 function norm(s){
-return (s||"").toLowerCase()
-.replace(/\([^)]*\)/g,"")
-.replace(/ingredients\s*:/i,"")
+return (s||"")
+.toLowerCase()
+.replace(/\(.*?\)/g,"")
+.replace(/ingredients\s*:/gi,"")
 .replace(/[^a-z0-9\s\-]/g," ")
 .replace(/\s+/g," ")
 .trim();
 }
 
-function pluralFix(word){
-if(word.endsWith("ies")) return word.slice(0,-3)+"y";
-if(word.endsWith("s")&&!word.endsWith("ss")) return word.slice(0,-1);
-return word;
+function singularize(w){
+if(w.endsWith("ies")) return w.slice(0,-3)+"y";
+if(w.endsWith("s") && !w.endsWith("ss")) return w.slice(0,-1);
+return w;
 }
 
 function keyify(s){
-return norm(s).split(" ").map(pluralFix).join(" ");
+return norm(s)
+.split(" ")
+.map(singularize)
+.join(" ");
 }
 
-function severity(item){
-const k=keyify(item);
-if(DATA.food.high.includes(k)) return "High";
-if(DATA.food.moderate.includes(k)) return "Moderate";
-if(DATA.additives.high.includes(k)) return "High Additive";
-if(DATA.additives.moderate.includes(k)) return "Moderate Additive";
+/* =========================================================
+   PARENT KEYWORDS
+========================================================= */
+
+const PARENTS={
+rice:["rice (white)","rice (brown)"],
+yogurt:["yogurt (plain)"],
+pepper:["pepper - green","pepper - white"]
+};
+
+/* =========================================================
+   MATCHING
+========================================================= */
+
+function getSeverity(term){
+const k=keyify(term);
+
+if(MORGAN.food.high.map(keyify).includes(k)) return "High";
+if(MORGAN.food.moderate.map(keyify).includes(k)) return "Moderate";
+if(MORGAN.additives.high.map(keyify).includes(k)) return "High";
+if(MORGAN.additives.moderate.map(keyify).includes(k)) return "Moderate";
+
 return null;
 }
 
-/* =====================
+function containsParent(term){
+const k=keyify(term);
+for(const p in PARENTS){
+if(k===p) return p;
+}
+return null;
+}
+
+/* =========================================================
    SCANNER
-===================== */
+========================================================= */
 
-function scanAll(){
-const items=document.getElementById("scanInput").value
-.split(/[\n,;]+/).map(x=>x.trim()).filter(Boolean);
+function renderResult(item){
+const sev=getSeverity(item);
+const parent=containsParent(item);
 
-let html="";
-items.forEach(i=>{
-const sev=severity(i);
-if(sev){
-html+=`<div class="result bad">
-<b>${i}</b> — NOT SAFE for Morgan
-<div class="muted">${sev}</div>
-</div>`;
-}else{
-html+=`<div class="result good">
-<b>${i}</b> — SAFE
+if(parent){
+let breakdown="";
+PARENTS[parent].forEach(v=>{
+const s=getSeverity(v);
+breakdown+=`<div>${v} — ${s?`<span class="pill ${s==="High"?"bad":"caution"}">${s}</span>`:`<span class="pill good">OK</span>`}</div>`;
+});
+return `
+<div class="result">
+<b>${item}</b>
+<div class="pill caution">CAUTION</div>
+<div class="divider"></div>
+${breakdown}
 </div>`;
 }
-});
-document.getElementById("scanResults").innerHTML=html||"<div class='result muted'>Nothing scanned.</div>";
+
+if(sev){
+return `
+<div class="result">
+<b>${item}</b>
+<div class="pill ${sev==="High"?"bad":"caution"}">${sev} — NOT SAFE for Morgan</div>
+</div>`;
+}
+
+return `
+<div class="result">
+<b>${item}</b>
+<div class="pill good">SAFE</div>
+</div>`;
+}
+
+function scanAll(){
+const raw=document.getElementById("scanInput").value;
+const items=raw.split(/[\n,]+/).map(x=>x.trim()).filter(Boolean);
+
+if(items.length===0){
+document.getElementById("scanResults").innerHTML="<div class='muted'>Paste ingredients first.</div>";
+return;
+}
+
+let html="";
+items.forEach(i=>html+=renderResult(i));
+document.getElementById("scanResults").innerHTML=html;
 }
 
 function demoScan(){
-document.getElementById("scanInput").value=
-"Chicken\nCarrots\nRice (white)\nBone broth\nE 221 sodium sulphite";
+document.getElementById("scanInput").value=`Chicken
+Carrot
+Rice
+Yogurt
+E 221 sodium sulphite`;
 scanAll();
 }
+
 function clearScan(){
 document.getElementById("scanInput").value="";
 document.getElementById("scanResults").innerHTML="";
 }
+  /* =========================================================
+   SAFE FOOD LIBRARY (Filtered by Morgan Lists)
+========================================================= */
 
-/* =====================
-   MEAL PLANNER
-===================== */
-
-const LIB={
-proteins:["chicken","turkey","duck","lamb","bison","venison","beef"],
-carbs:["rice (brown)","quinoa","oats","barley","pumpkin"],
-veg:["zucchini","green beans","spinach","broccoli","peas"],
+const LIB = {
+proteins:["chicken","turkey","duck","lamb","bison","venison","beef","sardine"],
+carbs:["rice (brown)","oats","barley","quinoa","pumpkin","sweet potato"],
+veg:["zucchini","green beans","spinach","broccoli","peas","cucumber"],
 fats:["fish oil","salmon oil","sunflower oil"],
-flavor:["pumpkin puree","bone broth","blueberries","apple","parsley"]
+boost:["pumpkin puree","bone broth","blueberries","apple","parsley"]
 };
 
-function isBanned(food){
-return DATA.food.high.includes(food)||DATA.food.moderate.includes(food);
+function isBanned(item){
+const k=keyify(item);
+return MORGAN.food.high.map(keyify).includes(k)
+|| MORGAN.food.moderate.map(keyify).includes(k);
 }
 
 function safePool(arr){
 return arr.filter(x=>!isBanned(x));
 }
 
-function ozToCups(oz){return oz/4;}
-function fmtLbsOz(oz){
-const lbs=Math.floor(oz/16);
-const r=oz-lbs*16;
-if(lbs<=0) return r.toFixed(1)+" oz";
-return lbs+" lb "+r.toFixed(1)+" oz";
+function pickRandom(arr){
+return arr[Math.floor(Math.random()*arr.length)];
 }
+
+/* =========================================================
+   UNIT HELPERS
+========================================================= */
+
+function lbsToOz(lbs){return lbs*16;}
+
+function fmtLbsOz(totalOz){
+const lbs=Math.floor(totalOz/16);
+const oz=(totalOz-lbs*16).toFixed(1).replace(/\.0$/,"");
+if(lbs<=0) return `${oz} oz`;
+return `${lbs} lb ${oz} oz`;
+}
+
+function fmtCups(oz){
+return (oz/4).toFixed(2).replace(/0+$/,"").replace(/\.$/,"")+" cups";
+}
+
+function fmtLiquid(oz){
+const unit=document.getElementById("liquidUnit").value;
+if(unit==="cups") return fmtCups(oz);
+return oz.toFixed(1).replace(/\.0$/,"")+" fl oz";
+}
+
+/* =========================================================
+   MEAL GENERATION
+========================================================= */
 
 let LAST_MEAL=null;
 
 function generateMeal(){
+
 const lbs=parseFloat(document.getElementById("morganWeight").value||"0");
-const pct=parseFloat(document.getElementById("activityPct").value)/100;
-const meals=parseInt(document.getElementById("mealsPerDay").value);
-const days=parseInt(document.getElementById("batchDays").value);
+const pct=parseFloat(document.getElementById("activity").value||"2.5")/100;
+const meals=parseInt(document.getElementById("mealsPerDay").value||"2",10);
+const days=parseInt(document.getElementById("batchDays").value||"7",10);
 
-if(!lbs) return;
+if(!lbs){
+document.getElementById("mealOutput").innerHTML="<div class='result'>Enter Morgan’s weight.</div>";
+return;
+}
 
-const dailyOz=lbs*pct*16;
-const perMeal=dailyOz/meals;
-const batch=dailyOz*days;
+const dailyOz=lbsToOz(lbs*pct);
+const perMealOz=dailyOz/meals;
+const batchTotalOz=dailyOz*days;
 
-const protein=safePool(LIB.proteins)[0]||"chicken";
-const carb=safePool(LIB.carbs)[0]||"rice (brown)";
-const veg=safePool(LIB.veg)[0]||"green beans";
-const fat=safePool(LIB.fats)[0]||"fish oil";
-const flavor=safePool(LIB.flavor)[0]||"pumpkin puree";
+const protein=pickRandom(safePool(LIB.proteins));
+const carb=pickRandom(safePool(LIB.carbs));
+const veg=pickRandom(safePool(LIB.veg));
+const fat=pickRandom(safePool(LIB.fats));
+const boost=pickRandom(safePool(LIB.boost));
 
-LAST_MEAL={protein,carb,veg,fat,flavor,batch,dailyOz,perMeal,days};
+const proteinOz=batchTotalOz*0.5;
+const carbOz=batchTotalOz*0.2;
+const vegOz=batchTotalOz*0.15;
+const fatOz=batchTotalOz*0.05;
+const boostOz=batchTotalOz*0.1;
+
+LAST_MEAL={
+protein,carb,veg,fat,boost,
+dailyOz,perMealOz,batchTotalOz,
+proteinOz,carbOz,vegOz,fatOz,boostOz,
+days,meals
+};
 
 document.getElementById("mealOutput").innerHTML=`
-<div class="result good">
-<b>Protein:</b> ${protein}<br>
-<b>Carb:</b> ${carb}<br>
-<b>Veg:</b> ${veg}<br>
-<b>Fat:</b> ${fat}<br>
-<b>Flavor:</b> ${flavor}
 <div class="divider"></div>
-<b>Daily:</b> ${fmtLbsOz(dailyOz)} (~${ozToCups(dailyOz).toFixed(2)} cups)<br>
-<b>Per meal:</b> ${fmtLbsOz(perMeal)} (~${ozToCups(perMeal).toFixed(2)} cups)<br>
-<b>Batch total (${days} days):</b> ${fmtLbsOz(batch)}
+<div class="result">
+<b>Meal Suggestion (Morgan Safe Filter)</b>
+<div class="divider"></div>
+
+<div><b>Protein:</b> ${protein}</div>
+<div><b>Carb:</b> ${carb}</div>
+<div><b>Veg:</b> ${veg}</div>
+<div><b>Fat:</b> ${fat}</div>
+<div><b>Flavor:</b> ${boost}</div>
+
+<div class="divider"></div>
+
+<b>Feeding</b><br>
+Morgan daily: ${fmtLbsOz(dailyOz)} (~${fmtCups(dailyOz)})<br>
+Morgan per meal: ${fmtLbsOz(perMealOz)} (~${fmtCups(perMealOz)})
+
+<div class="divider"></div>
+
+<b>Batch (${days} days)</b><br>
+Total: ${fmtLbsOz(batchTotalOz)} (~${fmtCups(batchTotalOz)})
+
+<div class="divider"></div>
+
+<b>Grocery Breakdown</b>
+<div class="mono">
+${protein}: ${fmtLbsOz(proteinOz)}
+${carb}: ${fmtLbsOz(carbOz)}
+${veg}: ${fmtLbsOz(vegOz)}
+${fat}: ${fmtLbsOz(fatOz)}
+${boost}: ${fmtLbsOz(boostOz)} (≈ ${fmtLiquid(boostOz)})
+</div>
+
+<div class="divider"></div>
+
+<b>Cooking Instructions</b>
+<div class="mono">
+1) Cook protein fully. No seasoning.
+2) Cook carb plain in water.
+3) Steam vegetables.
+4) Let cool completely.
+5) Mix together.
+6) Add oils after cooling.
+7) Portion daily servings.
+8) Refrigerate 3–4 days. Freeze remainder.
+</div>
 </div>`;
 }
 
-/* =====================
+/* =========================================================
    SAVE + EXPORT
-===================== */
+========================================================= */
+
+const LS_KEY="morgan_saved_meals";
 
 function saveMeal(){
-if(!LAST_MEAL) return alert("Generate meal first.");
-const arr=JSON.parse(localStorage.getItem("morganMeals")||"[]");
-arr.unshift(LAST_MEAL);
-localStorage.setItem("morganMeals",JSON.stringify(arr));
+if(!LAST_MEAL){alert("Generate meal first.");return;}
+const saved=JSON.parse(localStorage.getItem(LS_KEY)||"[]");
+saved.unshift(LAST_MEAL);
+localStorage.setItem(LS_KEY,JSON.stringify(saved));
 renderSaved();
+alert("Saved ✅");
 }
 
 function renderSaved(){
-const arr=JSON.parse(localStorage.getItem("morganMeals")||"[]");
-if(!arr.length){
-document.getElementById("savedMeals").innerHTML="<div class='muted'>No saved meals.</div>";
+const saved=JSON.parse(localStorage.getItem(LS_KEY)||"[]");
+if(saved.length===0){
+document.getElementById("savedMeals").innerHTML="<div class='muted'>No saved meals yet.</div>";
 return;
 }
 let html="";
-arr.forEach(m=>{
+saved.forEach((m,i)=>{
 html+=`
-<div class="savedBox">
-Protein: ${m.protein}
-Carb: ${m.carb}
-Veg: ${m.veg}
-Fat: ${m.fat}
-Flavor: ${m.flavor}
-
-Daily: ${fmtLbsOz(m.dailyOz)}
-Batch: ${fmtLbsOz(m.batch)} (${m.days} days)
+<div class="result">
+<b>${m.protein} + ${m.carb} + ${m.veg}</b>
+<div class="mono">${fmtLbsOz(m.batchTotalOz)}</div>
+<button onclick="deleteMeal(${i})">Delete</button>
 </div>`;
 });
 document.getElementById("savedMeals").innerHTML=html;
 }
 
+function deleteMeal(i){
+const saved=JSON.parse(localStorage.getItem(LS_KEY)||"[]");
+saved.splice(i,1);
+localStorage.setItem(LS_KEY,JSON.stringify(saved));
+renderSaved();
+}
+
 function exportGrocery(){
-if(!LAST_MEAL) return alert("Generate meal first.");
-const txt=`
-Morgan Grocery List
+if(!LAST_MEAL){alert("Generate meal first.");return;}
+const m=LAST_MEAL;
 
-Protein: ${LAST_MEAL.protein}
-Carb: ${LAST_MEAL.carb}
-Veg: ${LAST_MEAL.veg}
-Fat: ${LAST_MEAL.fat}
-Flavor: ${LAST_MEAL.flavor}
+const text=
+`Morgan Grocery List
 
-Batch Total: ${fmtLbsOz(LAST_MEAL.batch)}
+Batch: ${m.days} days
+Meals/day: ${m.meals}
+
+INGREDIENTS
+${m.protein}: ${fmtLbsOz(m.proteinOz)}
+${m.carb}: ${fmtLbsOz(m.carbOz)}
+${m.veg}: ${fmtLbsOz(m.vegOz)}
+${m.fat}: ${fmtLbsOz(m.fatOz)}
+${m.boost}: ${fmtLbsOz(m.boostOz)} (≈ ${fmtLiquid(m.boostOz)})
+
+FEEDING
+Daily: ${fmtLbsOz(m.dailyOz)} (~${fmtCups(m.dailyOz)})
+Per Meal: ${fmtLbsOz(m.perMealOz)} (~${fmtCups(m.perMealOz)})
 `;
-navigator.clipboard.writeText(txt).then(()=>alert("Copied grocery list"));
+
+navigator.clipboard.writeText(text).then(()=>alert("Copied grocery list ✅"));
 }
 
-/* =====================
-   LISTS
-===================== */
-
-function renderLists(){
-document.getElementById("listsContent").innerHTML=`
-<b>High Food:</b><br>${DATA.food.high.join(", ")}<br><br>
-<b>Moderate Food:</b><br>${DATA.food.moderate.join(", ")}<br><br>
-<b>High Additives:</b><br>${DATA.additives.high.join(", ")}<br><br>
-<b>Moderate Additives:</b><br>${DATA.additives.moderate.join(", ")}
-`;
-}
-
-/* =====================
-   TABS
-===================== */
+/* =========================================================
+   TAB LOGIC
+========================================================= */
 
 function showTab(tab){
-["scanner","meal","saved","lists"].forEach(t=>{
+["scanner","meal","saved"].forEach(t=>{
 document.getElementById(t).style.display=(t===tab)?"block":"none";
 document.getElementById("tab-"+t).classList.toggle("active",t===tab);
 });
 if(tab==="saved") renderSaved();
-if(tab==="lists") renderLists();
 }
 
-document.getElementById("activityPct").oninput=function(){
-document.getElementById("pctLabel").innerText=this.value+"%";
-}
-document.getElementById("batchDays").oninput=function(){
-document.getElementById("batchLabel").innerText=this.value+" days";
-}
+document.getElementById("batchDays").addEventListener("input",e=>{
+document.getElementById("batchLabel").innerText=e.target.value+" days";
+});
+
+/* =========================================================
+   INIT
+========================================================= */
+
+renderSaved();
+
 </script>
 </body>
 </html>
