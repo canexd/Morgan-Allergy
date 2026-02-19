@@ -4,642 +4,683 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pet Peeves – Morgan</title>
-
 <style>
-:root{
-  --bg:#0b1424;
-  --panel:#121f35;
-  --panel2:#0f1b2f;
-  --ink:#eaf1ff;
-  --muted:rgba(234,241,255,.78);
-  --muted2:rgba(234,241,255,.60);
-  --line:rgba(255,255,255,.08);
-
-  --blue:#2f6df6;
-  --purple:#8a5cff;
-
-  --good:#5cffad;
-  --bad:#ff6b6b;
-  --caution:#ffd166;
-
-  --shadow:0 16px 44px rgba(0,0,0,.34);
-  --radius:18px;
-  --radius2:14px;
-  --mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-}
-
-*{box-sizing:border-box}
-body{
-  margin:0;
-  padding:18px;
-  background: radial-gradient(1200px 800px at 20% 0%, rgba(47,109,246,.18), transparent 55%),
-              radial-gradient(1200px 800px at 80% 10%, rgba(138,92,255,.14), transparent 55%),
-              var(--bg);
-  color:var(--ink);
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-}
-
-.wrap{max-width:980px;margin:0 auto}
-
-.hero{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  margin:10px 0 14px;
-  padding:14px;
-  border:1px solid var(--line);
-  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-}
-.hero h1{margin:0;font-size:18px}
-.hero .sub{font-size:13px;color:var(--muted)}
-
-.tabs{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin:14px 0 18px;
-}
-.tabBtn{
-  border:none;
-  cursor:pointer;
-  padding:11px 14px;
-  border-radius:999px;
-  font-weight:800;
-  color:var(--ink);
-  background:rgba(255,255,255,.05);
-  border:1px solid var(--line);
-}
-.tabBtn.active{
-  background:linear-gradient(180deg,rgba(47,109,246,.45),rgba(47,109,246,.22));
-  border-color:rgba(47,109,246,.45);
-}
-
-.card{
-  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:16px;
-  box-shadow:var(--shadow);
-  margin-bottom:16px;
-}
-.card h2{margin:0 0 10px;font-size:16px}
-
-textarea,input,select{
-  width:100%;
-  padding:12px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:rgba(10,18,32,.65);
-  color:var(--ink);
-  font-size:16px;
-}
-
-textarea{min-height:122px}
-
-.btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.btn{
-  border:none;
-  cursor:pointer;
-  padding:11px 14px;
-  border-radius:14px;
-  font-weight:900;
-  color:var(--ink);
-  background:rgba(255,255,255,.06);
-  border:1px solid var(--line);
-}
-.btn.primary{
-  background:linear-gradient(180deg,rgba(47,109,246,.55),rgba(47,109,246,.25));
-  border-color:rgba(47,109,246,.45);
-}
-
-.result{
-  margin-top:12px;
-  padding:12px;
-  border-radius:var(--radius2);
-  border:1px solid var(--line);
-  background:rgba(8,14,26,.60);
-}
-
-.pill{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:900;
-  border:1px solid var(--line);
-}
-
-.pill.good{color:var(--good)}
-.pill.bad{color:var(--bad)}
-.pill.caution{color:var(--caution)}
-
-.muted{color:var(--muted);font-size:13px}
-.mono{font-family:var(--mono)}
-.divider{height:1px;background:var(--line);margin:12px 0}
+  :root{
+    --bg:#0b1424; --panel:#121f35; --panel2:#0f1b2f;
+    --ink:#eaf1ff; --muted:rgba(234,241,255,.78); --muted2:rgba(234,241,255,.60);
+    --line:rgba(255,255,255,.08); --blue:#2f6df6; --purple:#8a5cff;
+    --good:#5cffad; --bad:#ff6b6b; --caution:#ffd166;
+    --shadow:0 16px 44px rgba(0,0,0,.34); --radius:18px; --radius2:14px;
+    --mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:18px;
+    background: radial-gradient(1200px 800px at 20% 0%, rgba(47,109,246,.18), transparent 55%),
+                radial-gradient(1200px 800px at 80% 10%, rgba(138,92,255,.14), transparent 55%),
+                var(--bg);
+    color:var(--ink);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  .wrap{max-width:980px; margin:0 auto}
+  .hero{
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    margin:10px 0 14px; padding:14px;
+    border:1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    border-radius: var(--radius); box-shadow: var(--shadow);
+  }
+  .hero h1{font-size:18px; margin:0; letter-spacing:.2px;}
+  .hero .sub{font-size:13px; color:var(--muted); margin-top:3px;}
+  .badgeRow{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+  .badge{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); color:var(--muted); white-space:nowrap;}
+  .tabs{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin:14px 0 18px;}
+  .tabBtn{
+    border:none; cursor:pointer; padding:11px 14px; border-radius:999px;
+    font-weight:800; color:var(--ink);
+    background:rgba(255,255,255,.05); border:1px solid var(--line);
+    transition:transform .08s ease, background .2s ease;
+  }
+  .tabBtn:active{transform:scale(.98)}
+  .tabBtn.active{background:linear-gradient(180deg,rgba(47,109,246,.45),rgba(47,109,246,.22)); border-color:rgba(47,109,246,.45);}
+  .tabBtn.red-tab.active{background:linear-gradient(180deg,rgba(255,107,107,.45),rgba(255,107,107,.22)); border-color:rgba(255,107,107,.45);}
+  .card{
+    background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px; box-shadow:var(--shadow); margin-bottom:16px;
+  }
+  .card h2{margin:0 0 10px; font-size:16px; letter-spacing:.2px;}
+  .muted{color:var(--muted); font-size:13px; line-height:1.45}
+  .muted2{color:var(--muted2); font-size:12px; line-height:1.45}
+  .divider{height:1px; background:var(--line); margin:12px 0}
+  .grid2{display:grid; gap:12px; grid-template-columns:1fr 1fr}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  textarea,input,select{
+    width:100%; padding:12px; border-radius:14px;
+    border:1px solid var(--line); background:rgba(10,18,32,.65);
+    color:var(--ink); outline:none; font-size:16px;
+  }
+  textarea{min-height:122px; resize:vertical}
+  label{display:block; font-size:12px; color:var(--muted); font-weight:800; margin:10px 0 6px}
+  .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+  .btn{border:none; cursor:pointer; padding:11px 14px; border-radius:14px; font-weight:900; color:var(--ink); background:rgba(255,255,255,.06); border:1px solid var(--line);}
+  .btn.primary{background:linear-gradient(180deg,rgba(47,109,246,.55),rgba(47,109,246,.25)); border-color:rgba(47,109,246,.45);}
+  .btn.purple{background:linear-gradient(180deg,rgba(138,92,255,.50),rgba(138,92,255,.22)); border-color:rgba(138,92,255,.40);}
+  .btn.danger{background:linear-gradient(180deg,rgba(255,107,107,.24),rgba(255,107,107,.12)); border-color:rgba(255,107,107,.30);}
+  .pillRow{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+  .pill{display:inline-flex; gap:7px; align-items:center; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:900; border:1px solid var(--line); background:rgba(255,255,255,.04); color:var(--muted);}
+  .pill.good{color:var(--good); border-color:rgba(92,255,173,.28); background:rgba(92,255,173,.08)}
+  .pill.bad{color:var(--bad); border-color:rgba(255,107,107,.28); background:rgba(255,107,107,.08)}
+  .pill.caution{color:var(--caution); border-color:rgba(255,209,102,.28); background:rgba(255,209,102,.08)}
+  .tag{font-size:11px; font-weight:950; padding:4px 9px; border-radius:999px; display:inline-block; margin-left:8px; border:1px solid var(--line); background:rgba(255,255,255,.05); color:var(--muted);}
+  .tag.food{border-color:rgba(47,109,246,.4); background:rgba(47,109,246,.14); color:#cfe0ff}
+  .tag.add{border-color:rgba(138,92,255,.4); background:rgba(138,92,255,.14); color:#e3d7ff}
+  .tag.toxic{border-color:rgba(255,107,107,.4); background:rgba(255,107,107,.14); color:#ffd0d0}
+  .result{margin-top:12px; padding:12px; border-radius:var(--radius2); border:1px solid var(--line); background:rgba(8,14,26,.60);}
+  .result .title{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; font-weight:950; letter-spacing:.2px;}
+  .result .title .left{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .result .reason{margin-top:6px; color:var(--muted); font-size:13px; line-height:1.45}
+  .result.good{border-color:rgba(92,255,173,.22)}
+  .result.bad{border-color:rgba(255,107,107,.22)}
+  .result.caution{border-color:rgba(255,209,102,.20)}
+  .mono{font-family:var(--mono)}
+  details{margin-top:10px; border-radius:var(--radius2); border:1px solid var(--line); background:rgba(8,14,26,.55); padding:10px 12px;}
+  summary{cursor:pointer; font-weight:950; color:var(--ink)}
+  .mini{font-size:12px; color:var(--muted2); line-height:1.5; margin-top:8px}
+  .kicker{font-size:12px; color:var(--muted); display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .savedCard{border:1px solid var(--line); background:rgba(8,14,26,.55); border-radius:var(--radius); padding:12px; margin-top:12px;}
+  .savedCard h3{margin:0 0 6px; font-size:14px}
+  .savedMeta{font-size:12px; color:var(--muted); margin-bottom:10px}
+  .savedBox{border:1px solid var(--line); border-radius:var(--radius2); background:rgba(255,255,255,.03); padding:10px; margin-top:10px;}
+  .savedBox .mono{white-space:pre-wrap}
+  .danger-grid{display:grid; gap:10px; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); margin-top:12px;}
+  .danger-card{border:1px solid rgba(255,107,107,.20); background:rgba(255,107,107,.06); border-radius:var(--radius2); padding:12px;}
+  .danger-card h3{margin:0 0 4px; font-size:13px; color:var(--bad);}
+  .danger-card .why{font-size:12px; color:var(--muted2); line-height:1.5;}
+  .danger-card .sev{display:inline-block; margin-top:6px; font-size:11px; font-weight:900; padding:3px 8px; border-radius:999px;}
+  .sev.fatal{background:rgba(255,50,50,.15); color:#ff6b6b; border:1px solid rgba(255,107,107,.3)}
+  .sev.serious{background:rgba(255,160,50,.12); color:#ffa040; border:1px solid rgba(255,160,80,.3)}
+  .sev.moderate{background:rgba(255,209,102,.10); color:var(--caution); border:1px solid rgba(255,209,102,.28)}
 </style>
 </head>
 <body>
-
 <div class="wrap">
-<div class="hero">
-<div>
-<h1>🐾 Pet Peeves — Morgan</h1>
-<div class="sub">
-Ultra Smart Scanner • Additives + Food • Meal Planner • Saved Meals • OCR-safe
-</div>
-</div>
-</div>
+  <div class="hero">
+    <div>
+      <h1>🐾 Pet Peeves — Morgan</h1>
+      <div class="sub">Food + Additives scanner • Universal dog safety • Smart keyword matching • Meal Planner</div>
+    </div>
+    <div class="badgeRow">
+      <span class="badge">✅ Smart matching</span>
+      <span class="badge">✅ Plural-proof</span>
+      <span class="badge">✅ Universal safety</span>
+      <span class="badge">✅ US units</span>
+    </div>
+  </div>
 
-<div class="tabs">
-<button class="tabBtn active" id="tab-scanner" onclick="showTab('scanner')">Scanner</button>
-<button class="tabBtn" id="tab-meal" onclick="showTab('meal')">Meal Planner</button>
-<button class="tabBtn" id="tab-saved" onclick="showTab('saved')">Saved Meals</button>
-</div>
+  <div class="tabs">
+    <button class="tabBtn active" id="tab-scanner" onclick="showTab('scanner')">🔍 Scanner</button>
+    <button class="tabBtn red-tab" id="tab-safety" onclick="showTab('safety')">🚨 Dog Safety</button>
+    <button class="tabBtn" id="tab-meal" onclick="showTab('meal')">🍲 Meal Planner</button>
+    <button class="tabBtn" id="tab-saved" onclick="showTab('saved')">💾 Saved Meals</button>
+    <button class="tabBtn" id="tab-lists" onclick="showTab('lists')">📚 Lists</button>
+  </div>
 
-<!-- SCANNER -->
-<div id="scanner" class="card">
-<h2>🔍 Scanner</h2>
-<div class="muted">
-Paste ingredients (comma or line separated). Food + Additives scanned together.
-Handles plurals, OCR parentheses, and parent keyword breakdown.
-</div>
+  <!-- SCANNER -->
+  <div id="scanner" class="card">
+    <h2>🔍 Scanner</h2>
+    <div class="muted">Paste ingredients (comma or line separated). Scans <b>Food + Additives</b> against Morgan's personal reactivity lists with smart keyword matching.</div>
+    <label>Ingredients to scan</label>
+    <textarea id="scanInput" placeholder="Example:
+Ingredients: apples, calcium carbonate (to maintain freshness)
+Chicken, beef, yogurt, carrots, rice flour, coconut oil, E 221 sodium sulphite, green peppers, pork, mackerel"></textarea>
+    <div class="btnRow">
+      <button class="btn primary" onclick="runScan()">Scan</button>
+      <button class="btn" onclick="demoScan()">Demo</button>
+      <button class="btn" onclick="clearScan()">Clear</button>
+    </div>
+    <div id="scanResults"></div>
+    <details>
+      <summary>📸 Tips</summary>
+      <div class="mini">
+        <b>iPhone:</b> photo → Live Text → copy → paste here.<br><br>
+        <b>Smart matching:</b> <span class="mono">green peppers</span> matches <span class="mono">Pepper - green</span>. Plurals, word order, and dashes handled automatically.<br><br>
+        <b>Parent keywords:</b> typing <span class="mono">yogurt</span> or <span class="mono">pork</span> alone will show all known tested variants so you can see exactly what was flagged.
+      </div>
+    </details>
+  </div>
 
-<textarea id="scanInput" placeholder="Example:
-Ingredients: apples, calcium carbonate (to preserve color)
-Chicken
-Rice
-Yogurt
-E 221 sodium sulphite"></textarea>
+  <!-- UNIVERSAL DOG SAFETY -->
+  <div id="safety" class="card" style="display:none">
+    <h2>🚨 Universal Dog Safety Checker</h2>
+    <div class="muted">Check any human food against things that are <b>toxic or dangerous for ALL dogs</b> — regardless of breed or individual reactivity. Type foods below to check them instantly, or browse the full danger reference list below.</div>
+    <label>Food to check (comma or line separated)</label>
+    <textarea id="safetyInput" placeholder="Example: chocolate, grapes, onion, peanut butter, xylitol, garlic, avocado"></textarea>
+    <div class="btnRow">
+      <button class="btn danger" onclick="runSafetyCheck()">Check Safety</button>
+      <button class="btn" onclick="clearSafety()">Clear</button>
+    </div>
+    <div id="safetyResults"></div>
+    <div class="divider"></div>
+    <div class="muted" style="font-weight:900; margin-bottom:4px;">⚠️ Full Danger Reference — Toxic to ALL Dogs</div>
+    <div class="muted2" style="margin-bottom:8px;">These are universal dog toxins. Always keep these away from any dog.</div>
+    <div class="danger-grid" id="dangerGrid"></div>
+  </div>
 
-<div class="btnRow">
-<button class="btn primary" onclick="scanAll()">Scan</button>
-<button class="btn" onclick="demoScan()">Demo</button>
-<button class="btn" onclick="clearScan()">Clear</button>
-</div>
+  <!-- MEAL PLANNER -->
+  <div id="meal" class="card" style="display:none">
+    <h2>🍲 Meal Planner</h2>
+    <div class="muted">Generates meals from dog-edible foods, filtered to exclude anything Moderate/High for Morgan. US units only.</div>
+    <div class="grid2">
+      <div><label>Morgan's weight (lbs)</label><input id="morganWeight" type="number" value="50" min="1" step="1"/></div>
+      <div>
+        <label>Activity level</label>
+        <select id="activity">
+          <option value="sedentary">Sedentary / weight loss</option>
+          <option value="normal" selected>Normal</option>
+          <option value="active">Active</option>
+          <option value="very_active">Very active</option>
+          <option value="working">Working / high output</option>
+        </select>
+        <div class="muted2" id="activityHint"></div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div>
+        <label>Meals per day</label>
+        <select id="mealsPerDay">
+          <option value="1">1</option><option value="2" selected>2</option><option value="3">3</option>
+        </select>
+      </div>
+      <div>
+        <label>Flavor intensity</label>
+        <select id="flavorIntensity"><option value="light">Light</option><option value="normal" selected>Normal</option><option value="extra">Extra tasty</option></select>
+      </div>
+    </div>
+    <label>Batch days (1–7)</label>
+    <input id="batchDays" type="range" min="1" max="7" value="7"/>
+    <div class="kicker"><span class="badge" id="batchLabel">7 days</span><span class="muted2">For grocery totals + batch cook math</span></div>
+    <div class="btnRow">
+      <button class="btn primary" onclick="generateMeal()">Generate Meal</button>
+      <button class="btn purple" onclick="saveMeal()">Save Meal</button>
+      <button class="btn" onclick="copyLastGrocery()">Copy Grocery</button>
+      <button class="btn" onclick="exportLastGrocery()">Export Grocery</button>
+    </div>
+    <div id="mealOutput"></div>
+    <details>
+      <summary>🧠 Notes</summary>
+      <div class="mini">• Planning tool only — consult your vet for serious symptoms.<br>• "Safe" = not on Moderate/High lists for Morgan.<br>• Always avoid onion/garlic seasoning. Keep broth plain.</div>
+    </details>
+  </div>
 
-<div id="scanResults"></div>
+  <!-- SAVED -->
+  <div id="saved" class="card" style="display:none">
+    <h2>💾 Saved Meals</h2>
+    <div class="muted">Saved on this device. Each snapshot includes meal, feeding amounts, grocery list, and cooking instructions.</div>
+    <div id="savedMeals"></div>
+  </div>
 
-<details style="margin-top:12px">
-<summary><b>📸 Photo → Text Tips</b></summary>
-<div class="muted" style="margin-top:6px">
-iPhone: Take photo → tap Live Text → copy → paste here.<br><br>
-Parentheses like <span class="mono">calcium carbonate (freshness)</span> are ignored for matching.<br>
-Plural-safe: carrots → carrot. noodles → noodle.
-</div>
-</details>
-
-</div>
-<!-- MEAL PLANNER -->
-<div id="meal" class="card" style="display:none">
-<h2>🍲 Meal Planner</h2>
-<div class="muted">
-Generates meals from dog-safe foods, then filters out anything listed as Moderate or High for Morgan.
-US units only: lbs / oz / cups / fl oz.
-</div>
-
-<label>Morgan weight (lbs)</label>
-<input id="morganWeight" type="number" value="55" min="1" step="1">
-
-<label>Activity level</label>
-<select id="activity">
-<option value="2.0">Sedentary (2%)</option>
-<option value="2.5" selected>Normal (2.5%)</option>
-<option value="3.0">Active (3%)</option>
-<option value="3.5">Very Active (3.5%)</option>
-<option value="4.0">Working (4%)</option>
-</select>
-
-<label>Meals per day</label>
-<select id="mealsPerDay">
-<option value="1">1</option>
-<option value="2" selected>2</option>
-<option value="3">3</option>
-</select>
-
-<label>Batch days (1–7)</label>
-<input id="batchDays" type="range" min="1" max="7" value="7">
-<div class="muted"><span id="batchLabel">7 days</span></div>
-
-<label>Liquid display</label>
-<select id="liquidUnit">
-<option value="fl_oz" selected>fl oz</option>
-<option value="cups">cups</option>
-</select>
-
-<div class="btnRow">
-<button class="btn primary" onclick="generateMeal()">Generate Meal</button>
-<button class="btn" onclick="saveMeal()">Save Meal</button>
-<button class="btn" onclick="exportGrocery()">Export Grocery</button>
-</div>
-
-<div id="mealOutput"></div>
-</div>
-
-<!-- SAVED -->
-<div id="saved" class="card" style="display:none">
-<h2>💾 Saved Meals</h2>
-<div id="savedMeals"></div>
+  <!-- LISTS -->
+  <div id="lists" class="card" style="display:none">
+    <h2>📚 Lists</h2>
+    <div class="muted">High + Moderate reactivity lists used by the Scanner.</div>
+    <details open><summary>🍖 Food — Morgan</summary><div class="mini" id="listFoodMorgan"></div></details>
+    <details><summary>🧪 Additives — Morgan</summary><div class="mini" id="listAddMorgan"></div></details>
+  </div>
 </div>
 
 <script>
-
-/* =========================================================
-   MORGAN REACTIVITY DATA
-========================================================= */
-
-const MORGAN = {
-food:{
-high:[
-"bacon","carrot","cheese - cheddar","cheese - cottage","durian",
-"fermented pork","flaxseed","ginkgo biloba","mackerel","milk - cow",
-"ocean fish meal","pepper - green","pig skin","pine nut","pork",
-"pork fat","pork heart","pork kidney","pork liver","pork skins",
-"pork tongue","soy flour","tofu","yogurt (plain)"
-],
-moderate:[
-"alfalfa nutrient concentrate","anchovy","brussels sprouts","chestnut",
-"chokeberry (aronia berry)","coconut","cranberries","cream","elk",
-"figs","grapefruit","grouse","okra","olive oil","pepper - white",
-"pig trotters","rice (white)","roe - deer","salmon",
-"scarlet runner bean","teff (vegan)","trout","turkey heart"
-]
-},
-additives:{
-high:[
-"e 129 allura red","e 170 calcium carbonate","e 172 iron oxides",
-"e 234 nisin","e 304 ascorbyl palmitate","e 463 hydroxypropyl cellulose",
-"e 472 d tartaric acid esters","e 475 polyglycerol esters",
-"e 512 stannous chloride","e 629 calcium guanylate",
-"e 938 argon","e 941 nitrogen","formalin"
-],
-moderate:[
-"e 110 sunset yellow","e 151 brilliant black","e 203 calcium sorbate",
-"e 221 sodium sulphite","e 233 thiabendazole","e 326 potassium lactate",
-"e 336 potassium tartrate","e 338 phosphoric acid","e 460 cellulose",
-"e 495 sorbitan monopalmitate","e 514 sodium sulphate",
-"e 541 sodium aluminium phosphate","e 585 ferrous lactate",
-"e 952 cyclamic acid","e 953 isomalt","e 966 lactitol",
-"polyethylene glycol"
-]
-}
+/* ===== DATA ===== */
+const DATA={
+  food:{
+    morgan:{
+      high:[
+        "Bacon","Carrot","Cheese - Cheddar","Cheese - Cottage","Durian",
+        "Fermented pork","Flaxseed","Ginkgo biloba","Mackerel","Milk - Cow",
+        "Ocean Fish Meal","Pepper - green","Pig skin","Pine nut","Pork",
+        "Pork Fat","Pork Heart","Pork Kidney","Pork Liver","Pork Skins",
+        "Pork Tongue","Soy Flour","Tofu","Yogurt (plain)"
+      ],
+      moderate:[
+        "Alfalfa Nutrient Concentrate","Anchovy","Brussels Sprouts","Chestnut",
+        "Chokeberry (Aronia berry)","Coconut","Cranberries","Cream","Elk","Figs",
+        "Grapefruit","Grouse","Okra","Olive Oil","Pepper - white","Pig Trotters",
+        "Rice (white)","Roe - deer","Salmon","Scarlet runner bean",
+        "Teff (Vegan)","Trout","Turkey Heart"
+      ]
+    }
+  },
+  additives:{
+    morgan:{
+      high:[
+        "E 129 Allura Red (synthetic red dye)",
+        "E 170 Calcium carbonate (white pigment, anti-caking)",
+        "E 172 Iron oxides (yellow, red or black pigment)",
+        "E 234 Nisin (antimicrobial preservative)",
+        "E 304 Ascorbyl palmitate (antioxidant)",
+        "E 463 Hydroxypropyl cellulose (thickener)",
+        "E 472 d Tartaric acid esters of mono- and diglycerides (emulsifier)",
+        "E 475 Polyglycerol esters of fatty acids (emulsifier)",
+        "E 512 Stannous chloride (preservative)",
+        "E 629 Calcium guanylate (flavour enhancer)",
+        "E 938 Argon (packing gas)",
+        "E 941 Nitrogen (packing gas)",
+        "Formalin"
+      ],
+      moderate:[
+        "E 110 Sunset Yellow (orange synthetic dye)",
+        "E 151 Brilliant Black (synthetic black dye)",
+        "E 203 Calcium sorbate (preservative)",
+        "E 221 Sodium sulphite (preservative)",
+        "E 233 Thiabendazole (preservative/fungicide)",
+        "E 326 Potassium lactate (acidity regulator)",
+        "E 336 Potassium tartrate (acidity regulator)",
+        "E 338 Phosphoric acid (acidity regulator)",
+        "E 460 Cellulose (bulking agent)",
+        "E 495 Sorbitan monopalmitate (emulsifier)",
+        "E 514 Sodium sulphate (acidity regulator)",
+        "E 541 Sodium aluminium phosphate (raising agent)",
+        "E 585 Ferrous lactate (colour stabiliser)",
+        "E 952 Cyclamic acid and salts (sweetener)",
+        "E 953 Isomalt (sweetener)",
+        "E 966 Lactitol (sweetener)",
+        "Polyethylene Glycol"
+      ]
+    }
+  }
 };
 
-/* =========================================================
-   SMART NORMALIZATION ENGINE
-========================================================= */
+/* ===== UNIVERSAL DANGER LIST ===== */
+const DANGERS=[
+  {name:"Chocolate / Cocoa",aliases:["chocolate","cocoa","cacao","dark chocolate","milk chocolate","white chocolate","baking chocolate"],severity:"fatal",why:"Contains theobromine and caffeine — dogs metabolize these far slower than humans. Causes vomiting, seizures, heart failure, and can be fatal. Dark and baking chocolate are most dangerous."},
+  {name:"Grapes & Raisins",aliases:["grape","grapes","raisin","raisins","currant","currants","sultana","sultanas"],severity:"fatal",why:"Even small amounts can cause sudden kidney failure. The toxic compound is unknown. No safe dose — any ingestion is an emergency."},
+  {name:"Xylitol",aliases:["xylitol","birch sugar","birch sweetener"],severity:"fatal",why:"Found in sugar-free gum, candy, and some peanut butters. Causes rapid insulin release, hypoglycemia, liver failure, and death. Always check labels."},
+  {name:"Onions & Garlic",aliases:["onion","onions","garlic","leek","leeks","chive","chives","shallot","shallots","scallion","scallions"],severity:"serious",why:"All Allium family members destroy red blood cells, causing hemolytic anemia. Cooked, raw, or powdered forms are all toxic. Symptoms may be delayed 3–5 days."},
+  {name:"Macadamia Nuts",aliases:["macadamia","macadamia nut","macadamia nuts"],severity:"serious",why:"Even small amounts cause weakness, vomiting, tremors, and fever. Mechanism unknown. Always toxic — no safe amount established."},
+  {name:"Alcohol",aliases:["alcohol","beer","wine","liquor","vodka","whiskey","rum","ethanol","spirits","booze"],severity:"fatal",why:"Dogs are far more sensitive than humans. Even small amounts cause disorientation, low blood sugar, seizures, and death."},
+  {name:"Caffeine",aliases:["caffeine","coffee","espresso","tea","energy drink","soda","cola"],severity:"serious",why:"Causes restlessness, rapid breathing, heart palpitations, tremors, and seizures. No antidote — treatment is supportive care only."},
+  {name:"Avocado",aliases:["avocado","avocados","guacamole"],severity:"serious",why:"Contains persin, causing vomiting, diarrhea, and fluid buildup around the heart and lungs. The pit is also a dangerous choking hazard."},
+  {name:"Raw Yeast Dough",aliases:["yeast dough","raw dough","bread dough","pizza dough"],severity:"serious",why:"Expands in the stomach causing painful bloating and potentially fatal GDV. Fermenting yeast also produces alcohol which adds a second toxicity risk."},
+  {name:"Nutmeg",aliases:["nutmeg"],severity:"serious",why:"Contains myristicin which causes disorientation, increased heart rate, high blood pressure, seizures, and hallucinations."},
+  {name:"Apple Seeds / Fruit Pits",aliases:["apple seed","apple seeds","apple core","cherry pit","cherry pits","peach pit","plum pit","apricot pit","fruit seeds","fruit pit"],severity:"serious",why:"Contain cyanogenic glycosides which release cyanide when chewed. Fruit flesh is fine, but always remove pits and seeds."},
+  {name:"Raw Salmon / Raw Fish",aliases:["raw salmon","raw fish","raw trout","uncooked salmon","uncooked fish"],severity:"serious",why:"Can carry Neorickettsia helminthoeca causing Salmon Poisoning Disease, which is often fatal if untreated. Always cook fish fully."},
+  {name:"Moldy Food",aliases:["mold","mouldy","moldy","rotten food","spoiled food","old food"],severity:"serious",why:"Mold produces mycotoxins that cause tremors, seizures, vomiting, and high temperature. Never allow dogs to eat from the trash."},
+  {name:"Salt / Sodium (large amounts)",aliases:["salt","sodium","salty","sea salt","table salt"],severity:"moderate",why:"Large amounts cause sodium ion poisoning — vomiting, diarrhea, seizures, and potentially death. Salty snacks like chips are risky."},
+  {name:"Cooked Bones",aliases:["cooked bone","cooked bones","chicken bone","chicken bones","rib bone","turkey bone"],severity:"serious",why:"Cooked bones splinter easily and can puncture the digestive tract, causing internal bleeding and dangerous blockages."},
+  {name:"Walnuts (Black)",aliases:["black walnut","black walnuts","walnut","walnuts"],severity:"serious",why:"Black walnuts are toxic and cause tremors and seizures. Regular walnuts can grow mold (juglone) that causes neurological damage."},
+  {name:"Tobacco / Nicotine",aliases:["tobacco","nicotine","cigarette","cigarettes","vape","nicotine patch"],severity:"fatal",why:"Nicotine is rapidly toxic — causes vomiting, seizures, rapid heart rate, collapse, and death. Cigarettes, vapes, and patches are all dangerous."},
+  {name:"Raw Potatoes / Green Potatoes",aliases:["raw potato","raw potatoes","green potato","potato plant","potato skin"],severity:"moderate",why:"Contain solanine which is toxic to dogs. Cooked plain potatoes are fine. Never feed raw or green potatoes."},
+  {name:"Wild Mushrooms",aliases:["mushroom","mushrooms","wild mushroom","toadstool"],severity:"fatal",why:"Many wild varieties cause liver failure and death. Store-bought button mushrooms are generally safe, but wild mushrooms must always be avoided."},
+];
 
-function norm(s){
-return (s||"")
-.toLowerCase()
-.replace(/\(.*?\)/g,"")
-.replace(/ingredients\s*:/gi,"")
-.replace(/[^a-z0-9\s\-]/g," ")
-.replace(/\s+/g," ")
-.trim();
+/* ===== MATCHING ENGINE ===== */
+function normText(s){
+  return (s||"").replace(/\u2019/g,"'").toLowerCase()
+    .replace(/\([^)]*\)/g," ").replace(/[^a-z0-9\s\-]/g," ").replace(/\s+/g," ").trim();
 }
-
 function singularize(w){
-if(w.endsWith("ies")) return w.slice(0,-3)+"y";
-if(w.endsWith("s") && !w.endsWith("ss")) return w.slice(0,-1);
-return w;
+  if(w.endsWith("ies")&&w.length>4) return w.slice(0,-3)+"y";
+  if(w.endsWith("ses")&&w.length>4) return w.slice(0,-2);
+  if(w.endsWith("s")&&!w.endsWith("ss")&&w.length>3) return w.slice(0,-1);
+  return w;
+}
+function tokenize(s){ return normText(s).replace(/-/g," ").split(/\s+/).filter(Boolean).map(singularize); }
+function tokSet(s){ return new Set(tokenize(s)); }
+function buildMap(items){ return items.map(c=>({canonical:c,tokens:tokSet(c)})); }
+
+const MAPS={
+  food:{
+    morgan:{high:buildMap(DATA.food.morgan.high),moderate:buildMap(DATA.food.morgan.moderate)}
+  },
+  additives:{
+    morgan:{high:buildMap(DATA.additives.morgan.high),moderate:buildMap(DATA.additives.morgan.moderate)}
+  }
+};
+
+/* 
+  ALIASES: maps generic terms → a specific tested variant.
+  When triggered, the scanner also expands via PARENTS to show all known variants.
+*/
+const ALIASES={
+  "brown rice":"Rice (brown)",
+  "white rice":"Rice (white)",
+  "rice flour":"Rice Flour",
+  "rice bran":"Rice Bran",
+  "yogurt":"Yogurt (plain)",
+  "yoghurt":"Yogurt (plain)",
+  "green pepper":"Pepper - green",
+  "pepper green":"Pepper - green",
+  "bell pepper green":"Pepper - green",
+  "cheese":"Cheese - Cheddar",
+  "milk":"Milk - Cow",
+  "bacon":"Bacon",
+  "ham":"Pork",
+  "pork chop":"Pork",
+  "pork loin":"Pork"
+};
+
+function setsEq(a,b){if(a.size!==b.size)return false;for(const v of a)if(!b.has(v))return false;return true;}
+function isSubset(sub,sup){for(const v of sub)if(!sup.has(v))return false;return true;}
+
+function match(inputToks,entry){
+  const iSet=new Set(inputToks),cSet=entry.tokens;
+  if(setsEq(iSet,cSet))return true;
+  if(cSet.size>=2&&isSubset(cSet,iSet))return true;
+  if(iSet.size>=2&&isSubset(iSet,cSet))return true;
+  return false;
 }
 
-function keyify(s){
-return norm(s)
-.split(" ")
-.map(singularize)
-.join(" ");
+function findReactivityHits(rawTerm){
+  const toks=tokenize(rawTerm);
+  const aliasKey=normText(rawTerm).replace(/-/g," ").replace(/\s+/g," ").trim();
+  const aliasTarget=ALIASES[aliasKey];
+  const inputs=aliasTarget?[toks,tokenize(aliasTarget)]:[toks];
+  const hits=[];
+  for(const type of["food","additives"]){
+    for(const dog of["morgan"]){
+      for(const sev of["high","moderate"]){
+        for(const t of inputs){
+          for(const entry of MAPS[type][dog][sev]){
+            if(match(t,entry)) hits.push({type,dog,sev:sev==="high"?"High":"Moderate",canonical:entry.canonical});
+          }
+        }
+      }
+    }
+  }
+  // E-number fallback
+  const em=rawTerm.match(/\bE\s*(\d+)\b/i);
+  if(em){
+    const en="e"+em[1];
+    for(const dog of["morgan"]){
+      for(const sev of["high","moderate"]){
+        for(const entry of MAPS.additives[dog][sev]){
+          if(entry.canonical.toLowerCase().replace(/\s+/g,"").includes(en))
+            hits.push({type:"additives",dog,sev:sev==="high"?"High":"Moderate",canonical:entry.canonical});
+        }
+      }
+    }
+  }
+  const seen=new Set();
+  return hits.filter(h=>{const id=`${h.type}|${h.dog}|${h.sev}|${h.canonical}`;if(seen.has(id))return false;seen.add(id);return true;});
 }
 
-/* =========================================================
-   PARENT KEYWORDS
-========================================================= */
+function findDangerHit(rawTerm){
+  const iSet=new Set(tokenize(rawTerm));
+  for(const d of DANGERS){
+    for(const a of d.aliases){
+      const aSet=new Set(tokenize(a));
+      if(setsEq(iSet,aSet)||isSubset(aSet,iSet)||isSubset(iSet,aSet)) return d;
+    }
+  }
+  return null;
+}
 
+/* ===== PARENT EXPANSION ===== */
+/*
+  PARENTS: when a single generic keyword is typed, show all known tested variants
+  with a note about which were actually tested vs. which the test didn't cover.
+  This ensures e.g. "yogurt" flags that only "Yogurt (plain)" was tested.
+*/
 const PARENTS={
-rice:["rice (white)","rice (brown)"],
-yogurt:["yogurt (plain)"],
-pepper:["pepper - green","pepper - white"]
+  yogurt:  {variants:["Yogurt (plain)"], note:"Only 'Yogurt (plain)' was tested. Other yogurt types (Greek, flavored, low-fat, etc.) were not individually tested — treat any yogurt with caution."},
+  yoghurt: {variants:["Yogurt (plain)"], note:"Only 'Yogurt (plain)' was tested. Other yogurt types were not individually tested — treat any yogurt with caution."},
+  pork:    {variants:["Pork","Pork Fat","Pork Heart","Pork Kidney","Pork Liver","Pork Skins","Pork Tongue","Pig skin","Pig Trotters","Bacon","Fermented pork"], note:"All pork products flagged — multiple pork variants were tested and all showed High reactivity."},
+  milk:    {variants:["Milk - Cow","Milk - Goat","Milk - Sheep"], note:"Only 'Milk - Cow' was tested and flagged High. Goat and sheep milk were tested separately and showed No Reactivity."},
+  cheese:  {variants:["Cheese - Cheddar","Cheese - Cottage","Cheese - American","Cheese - Swiss","Gouda","Halloumi","Manchego","Mozzarella","Parmesan"], note:"'Cheese - Cheddar' (High) and 'Cheese - Cottage' (High) were tested. Other cheese types tested as No Reactivity."},
+  pepper:  {variants:["Pepper - green","Pepper - white","Pepper - black","Pepper - red"], note:"'Pepper - green' (High) and 'Pepper - white' (Moderate) were flagged. Black and red pepper showed No Reactivity."},
+  rice:    {variants:["Rice (white)","Rice (brown)","Rice Bran","Rice Flour","Rice milk"], note:"'Rice (white)' flagged Moderate. Brown rice, bran, flour, and milk showed No Reactivity."},
+  coconut: {variants:["Coconut","Coconut Oil","Coconut milk","Coconut water"], note:"'Coconut' flagged Moderate. Coconut Oil, milk, and water showed No Reactivity."},
+  salmon:  {variants:["Salmon","Salmon Oil"], note:"'Salmon' flagged Moderate. Salmon Oil showed No Reactivity."},
+  egg:     {variants:["Egg White - Chicken","Egg Yolk - Chicken","Egg White - Duck","Egg Yolk - Duck","Egg White - Quail","Egg Yolk - Quail"], note:"All egg variants tested as No Reactivity for Morgan."},
 };
 
-/* =========================================================
-   MATCHING
-========================================================= */
-
-function getSeverity(term){
-const k=keyify(term);
-
-if(MORGAN.food.high.map(keyify).includes(k)) return "High";
-if(MORGAN.food.moderate.map(keyify).includes(k)) return "Moderate";
-if(MORGAN.additives.high.map(keyify).includes(k)) return "High";
-if(MORGAN.additives.moderate.map(keyify).includes(k)) return "Moderate";
-
-return null;
+function shouldExpand(raw){
+  const t=tokenize(raw);
+  return t.length===1&&!!(PARENTS[t[0]]);
 }
 
-function containsParent(term){
-const k=keyify(term);
-for(const p in PARENTS){
-if(k===p) return p;
+/* ===== SCANNER ===== */
+function parseInput(raw){
+  return (raw||"").replace(/\r/g,"").replace(/ingredients\s*:\s*/ig,"")
+    .split(/[\n,;]+/).map(x=>x.trim()).filter(Boolean);
 }
-return null;
-}
-
-/* =========================================================
-   SCANNER
-========================================================= */
-
-function renderResult(item){
-const sev=getSeverity(item);
-const parent=containsParent(item);
-
-if(parent){
-let breakdown="";
-PARENTS[parent].forEach(v=>{
-const s=getSeverity(v);
-breakdown+=`<div>${v} — ${s?`<span class="pill ${s==="High"?"bad":"caution"}">${s}</span>`:`<span class="pill good">OK</span>`}</div>`;
-});
-return `
-<div class="result">
-<b>${item}</b>
-<div class="pill caution">CAUTION</div>
-<div class="divider"></div>
-${breakdown}
-</div>`;
+function worstSev(hits){
+  if(!hits||!hits.length)return null;
+  return hits.some(h=>h.sev==="High")?"High":"Moderate";
 }
 
-if(sev){
-return `
-<div class="result">
-<b>${item}</b>
-<div class="pill ${sev==="High"?"bad":"caution"}">${sev} — NOT SAFE for Morgan</div>
-</div>`;
+function renderScanResult(item){
+  if(shouldExpand(item)) return renderParentCaution(item);
+  const typeTag=/\be\s*\d+\b/.test(normText(item))?"additives":"food";
+  const hits=findReactivityHits(item);
+  if(!hits.length){
+    return `<div class="result good"><div class="title"><div class="left">✅ <span>${esc(item)}</span><span class="tag ${typeTag==="food"?"food":"add"}">${typeTag==="food"?"Food":"Additive"}</span></div><span class="pill good">SAFE</span></div><div class="reason">No listed Moderate/High reactivity for Morgan.</div><div class="pillRow"><span class="pill good">Morgan: OK</span></div></div>`;
+  }
+  const mW=worstSev(hits);
+  const why=hits.slice(0,4).map(h=>`${h.type==="food"?"Food":"Additive"}: "${h.canonical}" → Morgan (${h.sev})`).join(" · ");
+  const mPill=mW?`<span class="pill ${mW==="High"?"bad":"caution"}">Morgan: ${mW}</span>`:`<span class="pill good">Morgan: OK</span>`;
+  return `<div class="result bad"><div class="title"><div class="left">⚠️ <span>${esc(item)}</span><span class="tag ${typeTag==="food"?"food":"add"}">${typeTag==="food"?"Food":"Additive"}</span></div><span class="pill bad">NOT SAFE</span></div><div class="reason">${esc(why)}</div><div class="pillRow">${mPill}</div></div>`;
 }
 
-return `
-<div class="result">
-<b>${item}</b>
-<div class="pill good">SAFE</div>
-</div>`;
+function renderParentCaution(raw){
+  const pKey=tokenize(raw)[0]||raw;
+  const entry=PARENTS[pKey]||{variants:[],note:""};
+  const variants=entry.variants;
+  const note=entry.note;
+  let rows="",anyFlag=false;
+  for(const v of variants){
+    const hits=findReactivityHits(v);
+    const mW=worstSev(hits.filter(h=>h.dog==="morgan"&&h.type==="food"));
+    if(mW)anyFlag=true;
+    rows+=`<div class="muted" style="margin-top:8px;line-height:1.4"><b>${esc(v)}</b> — <span style="color:${mW==="High"?"var(--bad)":mW==="Moderate"?"var(--caution)":"var(--good)"}">Morgan: ${mW||"OK"}</span></div>`;
+  }
+  const noteHtml=note?`<div style="margin-top:10px;padding:8px 10px;border-radius:10px;background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.18);font-size:12px;color:var(--caution);">ℹ️ ${esc(note)}</div>`:"";
+  return `<div class="result caution"><div class="title"><div class="left">🟡 <span>${esc(raw)}</span><span class="tag food">Food</span></div><span class="pill caution">CAUTION</span></div><div class="reason">${esc(`Generic keyword "${pKey}" — showing all known variants tested.`)}</div><div class="pillRow"><span class="pill caution">Keyword: ${esc(pKey)}</span>${anyFlag?`<span class="pill caution">Some variants flagged</span>`:`<span class="pill good">No variants flagged</span>`}</div><div class="divider"></div>${rows||`<div class="muted2">No variants configured.</div>`}${noteHtml}</div>`;
 }
 
-function scanAll(){
-const raw=document.getElementById("scanInput").value;
-const items=raw.split(/[\n,]+/).map(x=>x.trim()).filter(Boolean);
-
-if(items.length===0){
-document.getElementById("scanResults").innerHTML="<div class='muted'>Paste ingredients first.</div>";
-return;
+function runScan(){
+  const items=parseInput(document.getElementById("scanInput").value);
+  if(!items.length){document.getElementById("scanResults").innerHTML=`<div class="result"><div class="muted">Paste ingredients first.</div></div>`;return;}
+  document.getElementById("scanResults").innerHTML=items.map(renderScanResult).join("");
 }
-
-let html="";
-items.forEach(i=>html+=renderResult(i));
-document.getElementById("scanResults").innerHTML=html;
-}
-
 function demoScan(){
-document.getElementById("scanInput").value=`Chicken
-Carrot
-Rice
-Yogurt
-E 221 sodium sulphite`;
-scanAll();
+  document.getElementById("scanInput").value=`Ingredients: apples, calcium carbonate (to maintain freshness)\nChicken, beef, yogurt, carrots, rice, coconut oil, E 941 nitrogen, green peppers, pork, mackerel, salmon`;
+  runScan();
+}
+function clearScan(){document.getElementById("scanInput").value="";document.getElementById("scanResults").innerHTML="";}
+
+/* ===== SAFETY CHECKER ===== */
+function runSafetyCheck(){
+  const items=parseInput(document.getElementById("safetyInput").value);
+  if(!items.length){document.getElementById("safetyResults").innerHTML=`<div class="result"><div class="muted">Enter some foods to check first.</div></div>`;return;}
+  let html="";
+  for(const item of items){
+    const d=findDangerHit(item);
+    if(d){
+      const sevLabel=d.severity==="fatal"?"⚠️ POTENTIALLY FATAL":d.severity==="serious"?"🔶 SERIOUS RISK":"🟡 MODERATE RISK";
+      html+=`<div class="result bad"><div class="title"><div class="left">🚫 <span>${esc(item)}</span><span class="tag toxic">Toxic</span></div><span class="pill bad">${sevLabel}</span></div><div class="reason"><b>${esc(d.name)}</b> — ${esc(d.why)}</div></div>`;
+    }else{
+      html+=`<div class="result good"><div class="title"><div class="left">✅ <span>${esc(item)}</span></div><span class="pill good">NOT ON DANGER LIST</span></div><div class="reason">Not found in universal dog danger list. Also check in the 🔍 Scanner tab for Morgan's personal reactivity.</div></div>`;
+    }
+  }
+  document.getElementById("safetyResults").innerHTML=html;
+}
+function clearSafety(){document.getElementById("safetyInput").value="";document.getElementById("safetyResults").innerHTML="";}
+
+function renderDangerGrid(){
+  const seen=new Set();
+  let html="";
+  for(const d of DANGERS){
+    if(seen.has(d.name))continue; seen.add(d.name);
+    const sc=d.severity==="fatal"?"fatal":d.severity==="serious"?"serious":"moderate";
+    const sl=d.severity==="fatal"?"⚠️ Potentially Fatal":d.severity==="serious"?"🔶 Serious Risk":"🟡 Moderate Risk";
+    html+=`<div class="danger-card"><h3>${esc(d.name)}</h3><div class="why">${esc(d.why)}</div><span class="sev ${sc}">${sl}</span></div>`;
+  }
+  document.getElementById("dangerGrid").innerHTML=html;
 }
 
-function clearScan(){
-document.getElementById("scanInput").value="";
-document.getElementById("scanResults").innerHTML="";
-}
-  /* =========================================================
-   SAFE FOOD LIBRARY (Filtered by Morgan Lists)
-========================================================= */
+/* ===== MEAL PLANNER ===== */
+const APCT={sedentary:2.0,normal:2.5,active:3.0,very_active:3.5,working:4.0};
+function updateHint(){document.getElementById("activityHint").innerText=`~${(APCT[document.getElementById("activity").value]||2.5).toFixed(1)}% of bodyweight/day`;}
+updateHint();
+document.getElementById("activity").addEventListener("change",updateHint);
+document.getElementById("batchDays").addEventListener("input",()=>{document.getElementById("batchLabel").innerText=`${document.getElementById("batchDays").value} days`;});
 
-const LIB = {
-proteins:["chicken","turkey","duck","lamb","bison","venison","beef","sardine"],
-carbs:["rice (brown)","oats","barley","quinoa","pumpkin","sweet potato"],
-veg:["zucchini","green beans","spinach","broccoli","peas","cucumber"],
-fats:["fish oil","salmon oil","sunflower oil"],
-boost:["pumpkin puree","bone broth","blueberries","apple","parsley"]
+function fmtLbsOz(oz){const l=Math.floor(oz/16),r=oz-l*16,rt=+(Math.round(r*10)/10).toFixed(1).replace(/\.0$/,"");return l<=0?`${rt} oz`:`${l} lb ${rt} oz`;}
+function fmtCups(oz){return `${+(Math.round(oz/4*100)/100).toFixed(2).replace(/0+$/,"").replace(/\.$/,"")} cups`;}
+
+const LIB={
+  proteins:["Chicken","Turkey","Duck","Lamb","Bison","Venison","Beef","Goat","Sardine","Tuna","Cod"],
+  carbs:["Rice (brown)","Quinoa","Oats","Barley","Pumpkin","Butternut squash","Potato"],
+  veg:["Zucchini","Green beans","Spinach","Broccoli","Peas","Cucumber","Cauliflower","Celery","Kale"],
+  fats:["Fish Oil","Salmon Oil","Sunflower Oil","Beef Fat"],
+  flavor:["Pumpkin puree","Bone broth","Apple","Blueberries","Parsley","Turmeric","Ginger","Honey"]
 };
-
-function isBanned(item){
-const k=keyify(item);
-return MORGAN.food.high.map(keyify).includes(k)
-|| MORGAN.food.moderate.map(keyify).includes(k);
-}
-
-function safePool(arr){
-return arr.filter(x=>!isBanned(x));
-}
-
-function pickRandom(arr){
-return arr[Math.floor(Math.random()*arr.length)];
-}
-
-/* =========================================================
-   UNIT HELPERS
-========================================================= */
-
-function lbsToOz(lbs){return lbs*16;}
-
-function fmtLbsOz(totalOz){
-const lbs=Math.floor(totalOz/16);
-const oz=(totalOz-lbs*16).toFixed(1).replace(/\.0$/,"");
-if(lbs<=0) return `${oz} oz`;
-return `${lbs} lb ${oz} oz`;
-}
-
-function fmtCups(oz){
-return (oz/4).toFixed(2).replace(/0+$/,"").replace(/\.$/,"")+" cups";
-}
-
-function fmtLiquid(oz){
-const unit=document.getElementById("liquidUnit").value;
-if(unit==="cups") return fmtCups(oz);
-return oz.toFixed(1).replace(/\.0$/,"")+" fl oz";
-}
-
-/* =========================================================
-   MEAL GENERATION
-========================================================= */
+function banned(n){return findReactivityHits(n).filter(h=>h.type==="food").length>0;}
+function safePool(arr){return arr.filter(x=>!banned(x));}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
 
 let LAST_MEAL=null;
 
 function generateMeal(){
-
-const lbs=parseFloat(document.getElementById("morganWeight").value||"0");
-const pct=parseFloat(document.getElementById("activity").value||"2.5")/100;
-const meals=parseInt(document.getElementById("mealsPerDay").value||"2",10);
-const days=parseInt(document.getElementById("batchDays").value||"7",10);
-
-if(!lbs){
-document.getElementById("mealOutput").innerHTML="<div class='result'>Enter Morgan’s weight.</div>";
-return;
+  const mLbs=parseFloat(document.getElementById("morganWeight").value||0);
+  const mpd=parseInt(document.getElementById("mealsPerDay").value||2,10);
+  const days=parseInt(document.getElementById("batchDays").value||7,10);
+  const act=document.getElementById("activity").value;
+  const fi=document.getElementById("flavorIntensity").value;
+  if(!mLbs){document.getElementById("mealOutput").innerHTML=`<div class="result bad"><div class="muted">Enter Morgan's weight.</div></div>`;return;}
+  const pct=(APCT[act]||2.5)/100;
+  const mDOz=mLbs*16*pct,bOz=mDOz*days;
+  const proteins=safePool(LIB.proteins),carbs=safePool(LIB.carbs),veg=safePool(LIB.veg),fats=safePool(LIB.fats),flavors=safePool(LIB.flavor);
+  if(!proteins.length||!carbs.length||!veg.length){document.getElementById("mealOutput").innerHTML=`<div class="result bad"><div class="muted">No safe options after filtering. Use the Scanner to pick items manually.</div></div>`;return;}
+  const protein=pick(proteins),carb=pick(carbs),veggie=pick(veg),fat=fats.length?pick(fats):"Fish Oil";
+  const f1=flavors.length?pick(flavors):"Bone broth";
+  let f2=null;
+  if(fi==="extra"&&flavors.length>1){for(let i=0;i<8;i++){const c=pick(flavors);if(c!==f1){f2=c;break;}}}
+  const g={protein:bOz*0.50,carb:bOz*0.20,veg:bOz*0.15,fat:bOz*0.05,boost:bOz*0.10};
+  const bA=f2?g.boost*0.6:g.boost,bB=f2?g.boost*0.4:0;
+  const mMOz=mDOz/mpd;
+  const gt=buildGrocery({days,mpd,act,mDOz,mMOz,bOz,protein,carb,veggie,fat,f1,f2,g,bA,bB});
+  const ins=buildInstructions({protein,carb,veggie,fat,f1,f2,days});
+  LAST_MEAL={id:cryptoId(),createdAt:new Date().toISOString(),meta:{days,mpd,act,pct:APCT[act]||2.5},weights:{mLbs},feeding:{mDOz,mMOz,bOz},picks:{protein,carb,veggie,fat,f1,f2},g,bA,bB,groceryText:gt,instructions:ins};
+  document.getElementById("mealOutput").innerHTML=`
+    <div class="divider"></div>
+    <div class="result good">
+      <div class="title"><div class="left">✨ Meal Suggestion</div><span class="pill good">SAFE-ONLY FILTER</span></div>
+      <div class="reason">Filtered to exclude anything Moderate/High for Morgan.</div>
+      <div class="pillRow">
+        <span class="pill good">Protein: ${esc(protein)}</span><span class="pill good">Carb: ${esc(carb)}</span>
+        <span class="pill good">Veg: ${esc(veggie)}</span><span class="pill good">Fat: ${esc(fat)}</span>
+        <span class="pill good">Flavor: ${esc(f1)}${f2?` + ${esc(f2)}`:""}</span>
+      </div>
+      <div class="divider"></div>
+      <div class="kicker">
+        <span class="badge">Activity: ${esc(actLabel(act))}</span>
+        <span class="badge">Rule: ${(APCT[act]||2.5).toFixed(1)}% bodyweight/day</span>
+        <span class="badge">Meals/day: ${mpd}</span>
+        <span class="badge">Batch: ${days} day(s)</span>
+      </div>
+      <div class="divider"></div>
+      <div class="muted"><b>Feeding amounts</b></div>
+      <div class="muted2">
+        Morgan daily: <b>${fmtLbsOz(mDOz)}</b> (~${fmtCups(mDOz)}) · per meal: <b>${fmtLbsOz(mMOz)}</b><br>
+        Batch total: <b>${fmtLbsOz(bOz)}</b>
+      </div>
+      <div class="divider"></div>
+      <div class="muted"><b>Grocery breakdown</b></div>
+      <div class="savedBox"><div class="muted2 mono">${esc(gt)}</div></div>
+      <div class="divider"></div>
+      <div class="muted"><b>Cooking instructions</b></div>
+      <div class="savedBox"><div class="muted2 mono">${esc(ins)}</div></div>
+    </div>`;
 }
 
-const dailyOz=lbsToOz(lbs*pct);
-const perMealOz=dailyOz/meals;
-const batchTotalOz=dailyOz*days;
-
-const protein=pickRandom(safePool(LIB.proteins));
-const carb=pickRandom(safePool(LIB.carbs));
-const veg=pickRandom(safePool(LIB.veg));
-const fat=pickRandom(safePool(LIB.fats));
-const boost=pickRandom(safePool(LIB.boost));
-
-const proteinOz=batchTotalOz*0.5;
-const carbOz=batchTotalOz*0.2;
-const vegOz=batchTotalOz*0.15;
-const fatOz=batchTotalOz*0.05;
-const boostOz=batchTotalOz*0.1;
-
-LAST_MEAL={
-protein,carb,veg,fat,boost,
-dailyOz,perMealOz,batchTotalOz,
-proteinOz,carbOz,vegOz,fatOz,boostOz,
-days,meals
-};
-
-document.getElementById("mealOutput").innerHTML=`
-<div class="divider"></div>
-<div class="result">
-<b>Meal Suggestion (Morgan Safe Filter)</b>
-<div class="divider"></div>
-
-<div><b>Protein:</b> ${protein}</div>
-<div><b>Carb:</b> ${carb}</div>
-<div><b>Veg:</b> ${veg}</div>
-<div><b>Fat:</b> ${fat}</div>
-<div><b>Flavor:</b> ${boost}</div>
-
-<div class="divider"></div>
-
-<b>Feeding</b><br>
-Morgan daily: ${fmtLbsOz(dailyOz)} (~${fmtCups(dailyOz)})<br>
-Morgan per meal: ${fmtLbsOz(perMealOz)} (~${fmtCups(perMealOz)})
-
-<div class="divider"></div>
-
-<b>Batch (${days} days)</b><br>
-Total: ${fmtLbsOz(batchTotalOz)} (~${fmtCups(batchTotalOz)})
-
-<div class="divider"></div>
-
-<b>Grocery Breakdown</b>
-<div class="mono">
-${protein}: ${fmtLbsOz(proteinOz)}
-${carb}: ${fmtLbsOz(carbOz)}
-${veg}: ${fmtLbsOz(vegOz)}
-${fat}: ${fmtLbsOz(fatOz)}
-${boost}: ${fmtLbsOz(boostOz)} (≈ ${fmtLiquid(boostOz)})
-</div>
-
-<div class="divider"></div>
-
-<b>Cooking Instructions</b>
-<div class="mono">
-1) Cook protein fully. No seasoning.
-2) Cook carb plain in water.
-3) Steam vegetables.
-4) Let cool completely.
-5) Mix together.
-6) Add oils after cooling.
-7) Portion daily servings.
-8) Refrigerate 3–4 days. Freeze remainder.
-</div>
-</div>`;
+function buildGrocery(d){
+  return [`BATCH GROCERY LIST — ${d.days} day(s)`,`Activity: ${actLabel(d.act)}`,`Meals/day: ${d.mpd}`,``,
+    `MEAL PICKS`,`- Protein: ${d.protein}`,`- Carb: ${d.carb}`,`- Veg: ${d.veggie}`,`- Fat: ${d.fat}`,`- Flavor: ${d.f1}${d.f2?` + ${d.f2}`:""}`,``,
+    `TOTALS`,`- ${d.protein}: ${fmtLbsOz(d.g.protein)}`,`- ${d.carb}: ${fmtLbsOz(d.g.carb)}`,`- ${d.veggie}: ${fmtLbsOz(d.g.veg)}`,`- ${d.fat}: ${fmtLbsOz(d.g.fat)}`,`- ${d.f1}: ${fmtLbsOz(d.bA)}`,
+    ...(d.f2?[`- ${d.f2}: ${fmtLbsOz(d.bB)}`]:[]),``,
+    `FEEDING`,`- Morgan daily: ${fmtLbsOz(d.mDOz)} (~${fmtCups(d.mDOz)})`,`- Morgan per meal: ${fmtLbsOz(d.mMOz)}`].join("\n");
 }
+function buildInstructions(d){
+  return [`COOKING INSTRUCTIONS (${d.days} day batch)`,``,
+    `1) PROTEIN — ${d.protein}`,`   • Cook fully, no seasoning. Drain fat.`,``,
+    `2) CARB — ${d.carb}`,`   • Cook in water. No salt or onion/garlic.`,``,
+    `3) VEG — ${d.veggie}`,`   • Steam lightly until soft.`,``,
+    `4) COMBINE`,`   • Cool everything first, then mix.`,`   • Add ${d.fat} AFTER cooling.`,``,
+    `5) FLAVOR`,`   • Stir in ${d.f1}${d.f2?` + ${d.f2}`:""}. Keep plain.`,``,
+    `6) STORE`,`   • Refrigerate 3–4 days. Freeze the rest.`].join("\n");
+}
+function actLabel(k){return({sedentary:"Sedentary",normal:"Normal",active:"Active",very_active:"Very active",working:"Working"})[k]||k;}
+function copyLastGrocery(){if(!LAST_MEAL)return alert("Generate a meal first.");copyText(LAST_MEAL.groceryText);}
+function exportLastGrocery(){if(!LAST_MEAL)return alert("Generate a meal first.");downloadText(`grocery_${dateStamp()}.txt`,LAST_MEAL.groceryText);}
 
-/* =========================================================
-   SAVE + EXPORT
-========================================================= */
-
-const LS_KEY="morgan_saved_meals";
-
+/* ===== SAVE MEALS ===== */
+const LSK="morgan_savedMeals_v1";
 function saveMeal(){
-if(!LAST_MEAL){alert("Generate meal first.");return;}
-const saved=JSON.parse(localStorage.getItem(LS_KEY)||"[]");
-saved.unshift(LAST_MEAL);
-localStorage.setItem(LS_KEY,JSON.stringify(saved));
-renderSaved();
-alert("Saved ✅");
+  if(!LAST_MEAL){alert("Generate a meal first.");return;}
+  const s=loadSaved(); s.unshift(LAST_MEAL);
+  try{localStorage.setItem(LSK,JSON.stringify(s));}catch(e){}
+  renderSavedMeals(); alert("Saved ✅");
+}
+function loadSaved(){try{return JSON.parse(localStorage.getItem(LSK)||"[]")||[];}catch(e){return[];}}
+function deleteMeal(id){
+  const s=loadSaved().filter(m=>m.id!==id);
+  try{localStorage.setItem(LSK,JSON.stringify(s));}catch(e){}
+  renderSavedMeals();
+}
+function renderSavedMeals(){
+  const el=document.getElementById("savedMeals"),saved=loadSaved();
+  if(!saved.length){el.innerHTML=`<div class="result"><div class="muted">No saved meals yet.</div></div>`;return;}
+  el.innerHTML=saved.map(m=>{
+    const title=`${m.picks.protein} + ${m.picks.carb} + ${m.picks.veggie}`;
+    return `<div class="savedCard">
+      <h3>🍽️ ${esc(title)}</h3>
+      <div class="savedMeta">${new Date(m.createdAt).toLocaleString()} · Batch: ${m.meta.days} day(s) · Meals/day: ${m.meta.mpd}</div>
+      <div class="pillRow">
+        <span class="pill good">Protein: ${esc(m.picks.protein)}</span>
+        <span class="pill good">Carb: ${esc(m.picks.carb)}</span>
+        <span class="pill good">Veg: ${esc(m.picks.veggie)}</span>
+        <span class="pill good">Fat: ${esc(m.picks.fat)}</span>
+        <span class="pill good">Flavor: ${esc(m.picks.f1)}${m.picks.f2?` + ${esc(m.picks.f2)}`:""}</span>
+      </div>
+      <div class="savedBox"><div class="muted"><b>Grocery</b></div><div class="muted2 mono">${esc(m.groceryText)}</div>
+        <div class="btnRow"><button class="btn" onclick="copyText(${jsonStr(m.groceryText)})">Copy</button><button class="btn" onclick="downloadText('grocery_${escJs(m.id)}.txt',${jsonStr(m.groceryText)})">Export</button></div>
+      </div>
+      <div class="savedBox"><div class="muted"><b>Cooking</b></div><div class="muted2 mono">${esc(m.instructions)}</div>
+        <div class="btnRow"><button class="btn" onclick="copyText(${jsonStr(m.instructions)})">Copy</button></div>
+      </div>
+      <div class="btnRow"><button class="btn danger" onclick="deleteMeal('${escJs(m.id)}')">Delete</button></div>
+    </div>`;
+  }).join("");
 }
 
-function renderSaved(){
-const saved=JSON.parse(localStorage.getItem(LS_KEY)||"[]");
-if(saved.length===0){
-document.getElementById("savedMeals").innerHTML="<div class='muted'>No saved meals yet.</div>";
-return;
-}
-let html="";
-saved.forEach((m,i)=>{
-html+=`
-<div class="result">
-<b>${m.protein} + ${m.carb} + ${m.veg}</b>
-<div class="mono">${fmtLbsOz(m.batchTotalOz)}</div>
-<button onclick="deleteMeal(${i})">Delete</button>
-</div>`;
-});
-document.getElementById("savedMeals").innerHTML=html;
+/* ===== LISTS ===== */
+function renderLists(){
+  document.getElementById("listFoodMorgan").innerHTML=`<b>High:</b> ${DATA.food.morgan.high.join(", ")}<br><br><b>Moderate:</b> ${DATA.food.morgan.moderate.join(", ")}`;
+  document.getElementById("listAddMorgan").innerHTML=`<b>High:</b> ${DATA.additives.morgan.high.join(", ")}<br><br><b>Moderate:</b> ${DATA.additives.morgan.moderate.join(", ")}`;
 }
 
-function deleteMeal(i){
-const saved=JSON.parse(localStorage.getItem(LS_KEY)||"[]");
-saved.splice(i,1);
-localStorage.setItem(LS_KEY,JSON.stringify(saved));
-renderSaved();
-}
-
-function exportGrocery(){
-if(!LAST_MEAL){alert("Generate meal first.");return;}
-const m=LAST_MEAL;
-
-const text=
-`Morgan Grocery List
-
-Batch: ${m.days} days
-Meals/day: ${m.meals}
-
-INGREDIENTS
-${m.protein}: ${fmtLbsOz(m.proteinOz)}
-${m.carb}: ${fmtLbsOz(m.carbOz)}
-${m.veg}: ${fmtLbsOz(m.vegOz)}
-${m.fat}: ${fmtLbsOz(m.fatOz)}
-${m.boost}: ${fmtLbsOz(m.boostOz)} (≈ ${fmtLiquid(m.boostOz)})
-
-FEEDING
-Daily: ${fmtLbsOz(m.dailyOz)} (~${fmtCups(m.dailyOz)})
-Per Meal: ${fmtLbsOz(m.perMealOz)} (~${fmtCups(m.perMealOz)})
-`;
-
-navigator.clipboard.writeText(text).then(()=>alert("Copied grocery list ✅"));
-}
-
-/* =========================================================
-   TAB LOGIC
-========================================================= */
-
+/* ===== TABS + UTILS ===== */
 function showTab(tab){
-["scanner","meal","saved"].forEach(t=>{
-document.getElementById(t).style.display=(t===tab)?"block":"none";
-document.getElementById("tab-"+t).classList.toggle("active",t===tab);
-});
-if(tab==="saved") renderSaved();
+  for(const t of["scanner","safety","meal","saved","lists"]){
+    document.getElementById(t).style.display=(t===tab)?"block":"none";
+    document.getElementById("tab-"+t).classList.toggle("active",t===tab);
+  }
+  if(tab==="saved")renderSavedMeals();
+  if(tab==="lists")renderLists();
+  if(tab==="safety")renderDangerGrid();
 }
+function esc(s){return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
+function escJs(s){return String(s).replaceAll("\\","\\\\").replaceAll("'","\\'");}
+function jsonStr(s){return JSON.stringify(String(s));}
+function copyText(t){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(String(t)).then(()=>alert("Copied ✅")).catch(()=>fbCopy(t));}else fbCopy(t);}
+function fbCopy(t){const a=document.createElement("textarea");a.value=String(t);document.body.appendChild(a);a.select();document.execCommand("copy");document.body.removeChild(a);alert("Copied ✅");}
+function downloadText(fn,t){const b=new Blob([String(t)],{type:"text/plain;charset=utf-8"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download=fn;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);}
+function dateStamp(){const d=new Date();return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;}
+function cryptoId(){return "m_"+Math.random().toString(16).slice(2)+"_"+Date.now().toString(16);}
 
-document.getElementById("batchDays").addEventListener("input",e=>{
-document.getElementById("batchLabel").innerText=e.target.value+" days";
-});
-
-/* =========================================================
-   INIT
-========================================================= */
-
-renderSaved();
-
+renderSavedMeals();
 </script>
 </body>
 </html>
